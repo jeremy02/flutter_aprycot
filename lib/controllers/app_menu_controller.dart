@@ -5,7 +5,7 @@ import '../models/navigation/data/app_navigation_items.dart';
 
 class AppMenuController extends GetxController {
   final RxInt selectedIndex = 0.obs;
-  final RxString selectedSubmenuId = ''.obs;
+  final RxString selectedSubmenuId = 'dashboard'.obs;
   final RxBool isExpanded = false.obs;
   final RxSet<String> expandedMenus = <String>{}.obs;
   final RxString currentPage = 'Dashboard'.obs;
@@ -21,7 +21,7 @@ class AppMenuController extends GetxController {
   // Select top-level item
   void selectItem(int index, NavigationItem item) {
     selectedIndex.value = index;
-    selectedSubmenuId.value = '';
+    selectedSubmenuId.value = item.id;
     currentPage.value = item.label;
 
     if (item.hasSubmenu) {

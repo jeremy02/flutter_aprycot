@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/app_menu_controller.dart';
 import '../components/navigation/navigation_rail_widget.dart';
+import 'dashboard/dashboard_screen.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
@@ -48,27 +49,38 @@ class MainScreen extends StatelessWidget {
         ),
         Expanded(
           child: Center(
-            child: Obx(() => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                      Icons.dashboard_outlined,
-                      size: 64,
-                      color: Colors.grey.shade400
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                      controller.currentPage.value,
-                      style:
-                      TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                      )
-                  ),
-                  const SizedBox(height: 8),
-                  Text('Welcome to ${controller.currentPage.value} section'),
-                ],
-              ),
+            child: Obx(
+                  () {
+                if (controller.selectedSubmenuId.value == "dashboard") {
+                  // Only show this text when submenu is selected
+                  return SingleChildScrollView(
+                    child: DashboardScreen(),
+                  );
+                }
+
+                // Otherwise show the full column
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                        Icons.dashboard_outlined,
+                        size: 64,
+                        color: Colors.grey.shade400
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                        controller.currentPage.value,
+                        style:
+                        TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        )
+                    ),
+                    const SizedBox(height: 8),
+                    Text('Welcome to ${controller.selectedSubmenuId.value} section'),
+                  ],
+                );
+              },
             ),
           ),
         )
