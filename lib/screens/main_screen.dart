@@ -48,16 +48,23 @@ class MainScreen extends StatelessWidget {
         ),
         Expanded(
           child: Center(
-            child: Obx(
-                  () => Column(
+            child: Obx(() => Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.dashboard_outlined,
-                      size: 64, color: Colors.grey.shade400),
+                  Icon(
+                      Icons.dashboard_outlined,
+                      size: 64,
+                      color: Colors.grey.shade400
+                  ),
                   const SizedBox(height: 16),
-                  Text(controller.currentPage.value,
+                  Text(
+                      controller.currentPage.value,
                       style:
-                      TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+                      TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                      )
+                  ),
                   const SizedBox(height: 8),
                   Text('Welcome to ${controller.currentPage.value} section'),
                 ],
