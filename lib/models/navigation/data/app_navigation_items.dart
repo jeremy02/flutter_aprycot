@@ -5,13 +5,12 @@ class AppNavigationItems {
   static final List<NavigationItem> items = [
     NavigationItem(
       id: 'home',
-      iconPath: 'images/nav_menu/ic_special_pages.png',
       label: 'Home',
       isHeader: true,
     ),
     NavigationItem(
       id: 'dashboard',
-      iconPath: 'images/nav_menu/ic_special_pages.png',
+      iconPath: 'images/nav_menu/ic_dashboard.png',
       label: 'Dashboard',
       isHeader: false,
     ),
@@ -29,14 +28,14 @@ class AppNavigationItems {
     ),
     NavigationItem(
       id: 'authentication',
-      iconPath: 'images/nav_menu/ic_special_pages.png',
+      iconPath: 'images/nav_menu/ic_authentication.png',
       label: 'Authentication',
       isHeader: false,
       hasSubmenu: false,
     ),
     NavigationItem(
       id: 'users',
-      iconPath: 'images/nav_menu/ic_special_pages.png',
+      iconPath: 'images/nav_menu/ic_users.png',
       label: 'Users',
       isHeader: false,
       hasSubmenu: true,
@@ -48,7 +47,7 @@ class AppNavigationItems {
     ),
     NavigationItem(
       id: 'utilities',
-      iconPath: 'images/nav_menu/ic_special_pages.png',
+      iconPath: 'images/nav_menu/ic_utilities.png',
       label: 'Utilities',
       isHeader: false,
       hasSubmenu: false,
@@ -60,14 +59,14 @@ class AppNavigationItems {
     ),
     NavigationItem(
       id: 'components',
-      iconPath: 'images/nav_menu/ic_special_pages.png',
+      iconPath: 'images/nav_menu/ic_components.png',
       label: 'Components',
       isHeader: false,
       hasSubmenu: false,
     ),
     NavigationItem(
       id: 'widgets',
-      iconPath: 'images/nav_menu/ic_special_pages.png',
+      iconPath: 'images/nav_menu/ic_widgets.png',
       label: 'Widgets',
       isHeader: false,
       hasSubmenu: false,
