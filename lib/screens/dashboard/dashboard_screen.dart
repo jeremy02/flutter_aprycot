@@ -27,7 +27,7 @@ class DashboardScreen extends StatelessWidget {
                     children: [
                       Image.asset(
                         'images/dashboard/banner_image.png',
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
