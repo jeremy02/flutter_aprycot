@@ -54,40 +54,45 @@ class MainScreen extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: Obx(
-                () {
-              if (controller.selectedSubmenuId.value == "dashboard" && Responsive.isDesktop(context)) {
-                // Only show this text when submenu is selected
-                return SingleChildScrollView(
-                  child: DashboardScreen(),
-                );
-              }
+          child: Container(
+            decoration: BoxDecoration(
+              color: Color(0xFFFFf5EE),
+            ),
+            child: Obx(
+                  () {
+                if (controller.selectedSubmenuId.value == "dashboard" && Responsive.isDesktop(context)) {
+                  // Only show this text when submenu is selected
+                  return SingleChildScrollView(
+                    child: DashboardScreen(),
+                  );
+                }
 
-              // Otherwise show the full column
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                        Icons.dashboard_outlined,
-                        size: 64,
-                        color: Colors.grey.shade400
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                        controller.currentPage.value,
-                        style:
-                        TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        )
-                    ),
-                    const SizedBox(height: 8),
-                    Text('Welcome to ${controller.currentPage.value} section'),
-                  ],
-                ),
-              );
-            },
+                // Otherwise show the full column
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                          Icons.dashboard_outlined,
+                          size: 64,
+                          color: Colors.grey.shade400
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                          controller.currentPage.value,
+                          style:
+                          TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                          )
+                      ),
+                      const SizedBox(height: 8),
+                      Text('Welcome to ${controller.currentPage.value} section'),
+                    ],
+                  ),
+                );
+              },
+            ),
           )
         ),
       ],
