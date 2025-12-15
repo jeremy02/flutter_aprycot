@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
-  final double circleRadius = 100.0;
-  final double circleBorderWidth = 8.0;
-
   @override
   Widget build(BuildContext context) {
     return Container(
