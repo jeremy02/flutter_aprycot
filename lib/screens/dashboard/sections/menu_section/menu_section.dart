@@ -33,11 +33,10 @@ class MenuSection extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: EdgeInsets.only(
-                          right: index < controller.categories.length - 1 ? 16 : 0,
+                          right: index < controller.categories.length - 1 ? 24 : 0,
                         ),
                         child: Obx(() {
-                          final isSelected =
-                              controller.selectedIndex.value == index;
+                          final isSelected = controller.selectedIndex.value == index;
 
                           return CategoryCard(
                             category: controller.categories[index],

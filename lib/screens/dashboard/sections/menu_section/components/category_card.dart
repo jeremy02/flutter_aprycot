@@ -25,7 +25,7 @@ class CategoryCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: isSelected
                 ? const Color(0xFFEA6A12)
-                : Colors.white,
+                : Colors.white, // Color(0xFFFAFAFA)
             borderRadius: BorderRadius.circular(20),
             boxShadow: isSelected
                 ? [
@@ -38,10 +38,7 @@ class CategoryCard extends StatelessWidget {
             ]
                 : [],
           ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 20,
-          ),
+          padding: const EdgeInsets.all(24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,7 +87,6 @@ class _Icon extends StatelessWidget {
     );
   }
 }
-
 
 class _Footer extends StatelessWidget {
   final String name;
