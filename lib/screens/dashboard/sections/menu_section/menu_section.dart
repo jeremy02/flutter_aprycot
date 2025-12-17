@@ -22,7 +22,6 @@ class MenuSection extends StatelessWidget {
               children: [
                 _Header(),
                 const SizedBox(height: 32),
-
                 SizedBox(
                   height: 240,
                   child: ListView.builder(
