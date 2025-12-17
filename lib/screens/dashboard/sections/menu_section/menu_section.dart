@@ -22,8 +22,11 @@ class MenuSection extends StatelessWidget {
               children: [
                 _Header(),
                 const SizedBox(height: 32),
-                SizedBox(
-                  height: 240,
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minHeight: 248,
+                    maxHeight: 248,
+                  ),
                   child: ListView.builder(
                     controller: controller.scrollController,
                     scrollDirection: Axis.horizontal,

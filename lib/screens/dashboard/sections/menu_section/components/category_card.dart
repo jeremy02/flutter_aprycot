@@ -18,7 +18,7 @@ class CategoryCard extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(24),
         onTap: onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
@@ -26,7 +26,7 @@ class CategoryCard extends StatelessWidget {
             color: isSelected
                 ? const Color(0xFFEA6A12)
                 : Colors.white, // Color(0xFFFAFAFA)
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(24),
             boxShadow: isSelected
                 ? [
               BoxShadow(
@@ -40,10 +40,33 @@ class CategoryCard extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               _Icon(category.iconPath, isSelected),
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                category.name,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: isSelected ? Colors.white : const Color(0xFF1A1A2E),
+                ),
+              ),
+              const SizedBox(height: 24),
+              Container(
+                width: isSelected ? 56 : 36,
+                height: 2,
+                decoration: BoxDecoration(
+                  color: isSelected
+                      ? Colors.white.withOpacity(0.8)
+                      : const Color(0xFFEA6A12).withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(height: 24),
               _Footer(category.name, isSelected),
             ],
           ),
@@ -64,6 +87,19 @@ class _Icon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // const menuCategoryRadius  = ((_size - _borderWidth * 2) / 2) + 4;
+
+    // return CircleAvatar(
+    //   radius: menuCategoryRadius,
+    //   backgroundColor: selected ? Colors.white : Colors.transparent,
+    //   child: CircleAvatar(
+    //     radius: selected ? menuCategoryRadius - 4 : menuCategoryRadius,
+    //     backgroundImage: AssetImage(iconPath),
+    //     backgroundColor: selected ? Colors.white : Colors.transparent,
+    //   ),
+    // );
+
     return Container(
       width: _size,
       height: _size,
@@ -99,41 +135,18 @@ class _Footer extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          name,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-            color:
-            selected ? Colors.white : const Color(0xFF1A1A2E),
-          ),
-        ),
-        const SizedBox(height: 12),
         Container(
-          width: 40,
-          height: 3,
-          decoration: BoxDecoration(
-            color: selected
-                ? Colors.white.withOpacity(0.5)
-                : const Color(0xFFEA6A12).withOpacity(0.3),
-            borderRadius: BorderRadius.circular(2),
-          ),
-        ),
-        const SizedBox(height: 12),
-        Container(
-          width: 32,
-          height: 32,
+          width: 24,
+          height: 24,
           decoration: BoxDecoration(
             color:
             selected ? Colors.white : const Color(0xFFEA6A12),
             shape: BoxShape.circle,
           ),
           child: Icon(
-            Icons.arrow_forward,
-            size: 16,
-            color: selected
-                ? const Color(0xFFEA6A12)
-                : Colors.white,
+            Icons.arrow_forward_ios_outlined,
+            size: 12,
+            color: selected ? const Color(0xFFEA6A12) : Colors.white,
           ),
         ),
       ],
