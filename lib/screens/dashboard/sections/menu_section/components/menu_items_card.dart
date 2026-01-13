@@ -33,7 +33,7 @@ class MenuItemsCard extends StatelessWidget {
             right: 0,
             bottom: 0,
             child: Material(
-              color: isSelected ? const Color(0xFFE89261) : Colors.white,
+              color: isSelected ? const Color(0xFFEA6A12) : Colors.white,
               borderRadius: BorderRadius.circular(24),
               elevation: 4,
               shadowColor: Colors.black.withOpacity(0.06),
@@ -56,11 +56,11 @@ class MenuItemsCard extends StatelessWidget {
                       Text(
                         item.name,
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w700,
                           color: isSelected
                               ? Colors.white
-                              : const Color(0xFF1A1A2E),
+                              : const Color(0xFF07143B),
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -112,24 +112,24 @@ class MenuItemsCard extends StatelessWidget {
                                 Text(
                                   '\$${item.price.toStringAsFixed(2)}',
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w700,
-                                    color: isSelected
-                                        ? Colors.white
-                                        : const Color(0xFFEA6A12),
+                                    color: isSelected ? Colors.white : const Color(0xFFEA6A12),
                                   ),
                                 ),
                                 if (item.originalPrice != null) ...[
                                   const SizedBox(width: 6),
-                                  Text(
-                                    '\$${item.originalPrice!.toStringAsFixed(2)}',
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w500,
-                                      color: isSelected
-                                          ? Colors.white.withOpacity(0.7)
-                                          : const Color(0xFFB0B0B0),
-                                      decoration: TextDecoration.lineThrough,
+                                   Center(
+                                    child: Text(
+                                      '\$${item.originalPrice!.toStringAsFixed(2)}',
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w500,
+                                        color: isSelected
+                                            ? Colors.white.withOpacity(0.7)
+                                            : const Color(0xFFE3E1E1),
+                                        decoration: TextDecoration.none,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -140,8 +140,7 @@ class MenuItemsCard extends StatelessWidget {
                             color: const Color(0xFFEA6A12),
                             shape: const CircleBorder(),
                             elevation: 4,
-                            shadowColor:
-                            const Color(0xFFEA6A12).withOpacity(0.3),
+                            shadowColor: const Color(0xFFEA6A12).withOpacity(0.3),
                             child: InkWell(
                               onTap: onAddTap,
                               customBorder: const CircleBorder(),

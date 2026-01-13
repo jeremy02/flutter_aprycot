@@ -5,7 +5,7 @@ import '../models/menu_items/data/menu_items.dart';
 import '../models/menu_items/menu_item.dart';
 
 class MenuItemsController extends GetxController {
-  final selectedIndex = 0.obs;
+  final selectedIndex = 1.obs;
   final cartItems = <CartItem>[].obs;
   final ScrollController scrollController = ScrollController();
 

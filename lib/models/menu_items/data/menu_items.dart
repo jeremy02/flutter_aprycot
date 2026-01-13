@@ -11,7 +11,7 @@ class MenuItems {
     MenuItem(
       name: 'Vegetable Pizza',
       price: 5.49,
-      rating: 2.5,
+      rating: 1.5,
       imagePath: 'images/menu_items/menu_item_vegetable_pizza.png',
     ),
     MenuItem(
@@ -36,7 +36,7 @@ class MenuItems {
     MenuItem(
       name: 'Cheese Pizza',
       price: 5.29,
-      rating: 3.5,
+      rating: 1.5,
       imagePath: 'images/cart_items/cart_item_cheese_pizza.png',
     ),
   ];
