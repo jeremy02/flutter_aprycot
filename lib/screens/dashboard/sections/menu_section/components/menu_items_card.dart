@@ -137,7 +137,7 @@ class MenuItemsCard extends StatelessWidget {
                             ),
                           ),
                           Material(
-                            color: const Color(0xFFEA6A12),
+                            color: isSelected ? Colors.white : const Color(0xFFEA6A12),
                             shape: const CircleBorder(),
                             elevation: 4,
                             shadowColor: const Color(0xFFEA6A12).withOpacity(0.3),
@@ -150,9 +150,9 @@ class MenuItemsCard extends StatelessWidget {
                                 width: 36,
                                 height: 36,
                                 alignment: Alignment.center,
-                                child: const Icon(
+                                child: Icon(
                                   Icons.add,
-                                  color: Colors.white,
+                                  color: isSelected ? const Color(0xFFEA6A12) : Colors.white,
                                   size: 20,
                                 ),
                               ),
