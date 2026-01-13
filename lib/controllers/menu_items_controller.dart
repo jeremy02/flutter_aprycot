@@ -27,7 +27,7 @@ class MenuItemsController extends GetxController {
     if ((panelWidth / minItemWidth) < 4.3) {
       visibleItems = 3.3; // items to show for a smaller panel
     } else {
-      visibleItems = 4.3; // items to show for a larger panel
+      visibleItems = 4; // items to show for a larger panel
     }
 
     _itemWidth = (panelWidth - spacing * (visibleItems - 1)) / visibleItems;

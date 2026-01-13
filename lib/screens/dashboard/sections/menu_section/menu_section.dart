@@ -79,10 +79,13 @@ Widget _buildMenuItemsSection(BuildContext context) {
   final MenuItemsController controller = Get.put(MenuItemsController());
 
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
+    padding: const EdgeInsets.symmetric(
+      vertical: 8,
+      horizontal: 16,
+    ),
     child: LayoutBuilder(
       builder: (context, constraints) {
-        // Compute dynamic item width based on available panel width
+        // here we compute dynamic item width based on available panel width
         controller.computeItemWidth(constraints.maxWidth);
 
         return ConstrainedBox(

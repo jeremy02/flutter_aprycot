@@ -25,7 +25,7 @@ class MenuItemsCard extends StatelessWidget {
     return SizedBox(
       width: width,
       child: Stack(
-        clipBehavior: Clip.hardEdge, // important: prevent gesture interception
+        clipBehavior: Clip.none,
         children: [
           Positioned(
             top: imageOverlap,
@@ -43,7 +43,7 @@ class MenuItemsCard extends StatelessWidget {
                 splashColor: Colors.black.withOpacity(0.1),
                 highlightColor: Colors.black.withOpacity(0.05),
                 child: Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     top: imageOverlap + 20,
                     left: 20,
                     right: 20,
@@ -69,9 +69,9 @@ class MenuItemsCard extends StatelessWidget {
                       Row(
                         children: List.generate(5, (index) {
                           final difference = item.rating - index;
-                          Icon star;
+                          Widget starIcon;
                           if (difference >= 1) {
-                            star = Icon(
+                            starIcon = Icon(
                               Icons.star,
                               size: 16,
                               color: isSelected
@@ -79,7 +79,7 @@ class MenuItemsCard extends StatelessWidget {
                                   : const Color(0xFFEA6A12),
                             );
                           } else if (difference > 0 && difference < 1) {
-                            star = Icon(
+                            starIcon = Icon(
                               Icons.star_half,
                               size: 16,
                               color: isSelected
@@ -87,7 +87,7 @@ class MenuItemsCard extends StatelessWidget {
                                   : const Color(0xFFEA6A12),
                             );
                           } else {
-                            star = Icon(
+                            starIcon = Icon(
                               Icons.star_border,
                               size: 16,
                               color: isSelected
@@ -96,29 +96,52 @@ class MenuItemsCard extends StatelessWidget {
                             );
                           }
                           return Padding(
-                              padding: EdgeInsets.only(right: index < 4 ? 2 : 0),
-                              child: star);
+                            padding: EdgeInsets.only(right: index < 4 ? 2 : 0),
+                            child: starIcon,
+                          );
                         }),
                       ),
                       const SizedBox(height: 12),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            '\$${item.price.toStringAsFixed(2)}',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              color: isSelected
-                                  ? Colors.white
-                                  : const Color(0xFFEA6A12),
+                          Flexible(
+                            child: Row(
+                              children: [
+                                Text(
+                                  '\$${item.price.toStringAsFixed(2)}',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: isSelected
+                                        ? Colors.white
+                                        : const Color(0xFFEA6A12),
+                                  ),
+                                ),
+                                if (item.originalPrice != null) ...[
+                                  const SizedBox(width: 6),
+                                  Text(
+                                    '\$${item.originalPrice!.toStringAsFixed(2)}',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500,
+                                      color: isSelected
+                                          ? Colors.white.withOpacity(0.7)
+                                          : const Color(0xFFB0B0B0),
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                                  ),
+                                ],
+                              ],
                             ),
                           ),
                           Material(
                             color: const Color(0xFFEA6A12),
                             shape: const CircleBorder(),
                             elevation: 4,
-                            shadowColor: const Color(0xFFEA6A12).withOpacity(0.3),
+                            shadowColor:
+                            const Color(0xFFEA6A12).withOpacity(0.3),
                             child: InkWell(
                               onTap: onAddTap,
                               customBorder: const CircleBorder(),
@@ -144,7 +167,6 @@ class MenuItemsCard extends StatelessWidget {
               ),
             ),
           ),
-          // overlapping image
           Positioned(
             top: 0,
             left: 0,
@@ -153,9 +175,9 @@ class MenuItemsCard extends StatelessWidget {
               child: Container(
                 width: imageSize,
                 height: imageSize,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
+                decoration: BoxDecoration(
                   color: Colors.transparent,
+                  shape: BoxShape.circle,
                 ),
                 child: ClipOval(
                   child: Image.asset(
