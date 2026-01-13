@@ -19,7 +19,7 @@ class MenuItemsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double imageSize = 160.0;
+    const double imageSize = 150.0;
     const double imageOverlap = imageSize / 2;
 
     return SizedBox(
@@ -31,7 +31,7 @@ class MenuItemsCard extends StatelessWidget {
             top: imageOverlap,
             left: 0,
             right: 0,
-            bottom: 0,
+            // bottom: 0,
             child: Material(
               color: isSelected ? const Color(0xFFEA6A12) : Colors.white,
               borderRadius: BorderRadius.circular(24),
@@ -44,7 +44,7 @@ class MenuItemsCard extends StatelessWidget {
                 highlightColor: Colors.black.withOpacity(0.05),
                 child: Padding(
                   padding: const EdgeInsets.only(
-                    top: imageOverlap + 20,
+                    top: imageOverlap + 36,
                     left: 20,
                     right: 20,
                     bottom: 20,
@@ -147,13 +147,13 @@ class MenuItemsCard extends StatelessWidget {
                               splashColor: Colors.white.withOpacity(0.3),
                               highlightColor: Colors.white.withOpacity(0.1),
                               child: Container(
-                                width: 36,
-                                height: 36,
+                                width: 28,
+                                height: 28,
                                 alignment: Alignment.center,
                                 child: Icon(
                                   Icons.add,
                                   color: isSelected ? const Color(0xFFEA6A12) : Colors.white,
-                                  size: 20,
+                                  size: 14,
                                 ),
                               ),
                             ),

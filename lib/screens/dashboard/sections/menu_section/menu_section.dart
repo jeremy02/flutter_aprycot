@@ -18,7 +18,7 @@ class MenuSection extends StatelessWidget {
           Flexible(
             flex: 63,
             child: Container(
-              height: 720,
+              height: 690,
               width: double.infinity,
               color: Colors.yellow,
               child: Column(
@@ -29,6 +29,7 @@ class MenuSection extends StatelessWidget {
                   _buildMenuCategorySection(context),
                   const SizedBox(height: 32),
                   _buildMenuItemsSection(context),
+                  // const SizedBox(height: 16),
                 ],
               ),
             ),
@@ -37,7 +38,7 @@ class MenuSection extends StatelessWidget {
           Flexible(
             flex: 37,
             child: Container(
-              height: 720,
+              height: 690,
               width: double.infinity,
               color: Colors.yellow,
             ),
@@ -85,7 +86,6 @@ Widget _buildMenuItemsSection(BuildContext context) {
 
   return Padding(
     padding: const EdgeInsets.symmetric(
-      vertical: 16,
       horizontal: 16,
     ),
     child: LayoutBuilder(
