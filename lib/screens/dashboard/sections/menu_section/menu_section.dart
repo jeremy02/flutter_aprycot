@@ -17,22 +17,27 @@ class MenuSection extends StatelessWidget {
         children: [
           Flexible(
             flex: 63,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const MenuSectionHeader(),
-                const SizedBox(height: 32),
-                _buildMenuCategorySection(context),
-                const SizedBox(height: 20),
-                _buildMenuItemsSection(context),
-              ],
+            child: Container(
+              height: 720,
+              width: double.infinity,
+              color: Colors.yellow,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const MenuSectionHeader(),
+                  const SizedBox(height: 32),
+                  _buildMenuCategorySection(context),
+                  const SizedBox(height: 32),
+                  _buildMenuItemsSection(context),
+                ],
+              ),
             ),
           ),
           const SizedBox(width: 20),
           Flexible(
             flex: 37,
             child: Container(
-              height: 200,
+              height: 720,
               width: double.infinity,
               color: Colors.yellow,
             ),
@@ -80,7 +85,7 @@ Widget _buildMenuItemsSection(BuildContext context) {
 
   return Padding(
     padding: const EdgeInsets.symmetric(
-      vertical: 8,
+      vertical: 16,
       horizontal: 16,
     ),
     child: LayoutBuilder(
