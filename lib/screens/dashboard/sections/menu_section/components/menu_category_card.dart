@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sidebar_x/models/menu_category/menu_category_item.dart';
+import '../../../../../models/menu_category/menu_category_item.dart';
 import 'arrow_icon_button.dart';
 
-class CategoryCard extends StatelessWidget {
+class MenuCategoryCard extends StatelessWidget {
   final MenuCategoryItem category;
   final bool isSelected;
   final VoidCallback onTap;
 
-  const CategoryCard({
+  const MenuCategoryCard({
     super.key,
     required this.category,
     required this.isSelected,

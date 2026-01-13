@@ -1,0 +1,173 @@
+import 'package:flutter/material.dart';
+import '../../../../../models/menu_items/menu_item.dart';
+
+class MenuItemsCard extends StatelessWidget {
+  final MenuItem item;
+  final double width;
+  final bool isSelected;
+  final VoidCallback onTap;
+  final VoidCallback onAddTap;
+
+  const MenuItemsCard({
+    super.key,
+    required this.item,
+    required this.width,
+    required this.isSelected,
+    required this.onTap,
+    required this.onAddTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const double imageSize = 160.0;
+    const double imageOverlap = imageSize / 2;
+
+    return SizedBox(
+      width: width,
+      child: Stack(
+        clipBehavior: Clip.hardEdge, // important: prevent gesture interception
+        children: [
+          Positioned(
+            top: imageOverlap,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Material(
+              color: isSelected ? const Color(0xFFE89261) : Colors.white,
+              borderRadius: BorderRadius.circular(24),
+              elevation: 4,
+              shadowColor: Colors.black.withOpacity(0.06),
+              child: InkWell(
+                onTap: onTap,
+                borderRadius: BorderRadius.circular(24),
+                splashColor: Colors.black.withOpacity(0.1),
+                highlightColor: Colors.black.withOpacity(0.05),
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: imageOverlap + 20,
+                    left: 20,
+                    right: 20,
+                    bottom: 20,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        item.name,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: isSelected
+                              ? Colors.white
+                              : const Color(0xFF1A1A2E),
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: List.generate(5, (index) {
+                          final difference = item.rating - index;
+                          Icon star;
+                          if (difference >= 1) {
+                            star = Icon(
+                              Icons.star,
+                              size: 16,
+                              color: isSelected
+                                  ? Colors.white
+                                  : const Color(0xFFEA6A12),
+                            );
+                          } else if (difference > 0 && difference < 1) {
+                            star = Icon(
+                              Icons.star_half,
+                              size: 16,
+                              color: isSelected
+                                  ? Colors.white
+                                  : const Color(0xFFEA6A12),
+                            );
+                          } else {
+                            star = Icon(
+                              Icons.star_border,
+                              size: 16,
+                              color: isSelected
+                                  ? Colors.white
+                                  : const Color(0xFFEA6A12),
+                            );
+                          }
+                          return Padding(
+                              padding: EdgeInsets.only(right: index < 4 ? 2 : 0),
+                              child: star);
+                        }),
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '\$${item.price.toStringAsFixed(2)}',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              color: isSelected
+                                  ? Colors.white
+                                  : const Color(0xFFEA6A12),
+                            ),
+                          ),
+                          Material(
+                            color: const Color(0xFFEA6A12),
+                            shape: const CircleBorder(),
+                            elevation: 4,
+                            shadowColor: const Color(0xFFEA6A12).withOpacity(0.3),
+                            child: InkWell(
+                              onTap: onAddTap,
+                              customBorder: const CircleBorder(),
+                              splashColor: Colors.white.withOpacity(0.3),
+                              highlightColor: Colors.white.withOpacity(0.1),
+                              child: Container(
+                                width: 36,
+                                height: 36,
+                                alignment: Alignment.center,
+                                child: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // overlapping image
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Container(
+                width: imageSize,
+                height: imageSize,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.transparent,
+                ),
+                child: ClipOval(
+                  child: Image.asset(
+                    item.imagePath,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

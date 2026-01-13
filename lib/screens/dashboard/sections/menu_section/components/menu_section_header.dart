@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sidebar_x/screens/dashboard/sections/menu_section/components/arrow_icon_button.dart';
+import 'arrow_icon_button.dart';
 
 class MenuSectionHeader extends StatelessWidget {
   const MenuSectionHeader({super.key});
