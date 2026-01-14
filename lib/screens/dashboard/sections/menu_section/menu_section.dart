@@ -12,7 +12,7 @@ class MenuSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    const double containerHeight = 690.0;
+    const double containerHeight = 710.0;
 
     return Padding(
       padding: const EdgeInsets.all(20),
@@ -21,12 +21,14 @@ class MenuSection extends StatelessWidget {
           Flexible(
             flex: 63,
             child: Container(
-              height: containerHeight,
+              // height: containerHeight,
               width: double.infinity,
               color: Colors.yellow,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const SizedBox(height: 10),
                   const MenuSectionHeader(),
                   const SizedBox(height: 32),
                   _buildMenuCategorySection(context),
@@ -40,10 +42,18 @@ class MenuSection extends StatelessWidget {
           const SizedBox(width: 20),
           Flexible(
             flex: 37,
-            child: Container(
-              height: containerHeight,
-              width: double.infinity,
-              color: Colors.yellow,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Container(
+                height: containerHeight,
+                width: double.infinity,
+                // color: Colors.yellow,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 24.0,
+                  horizontal: 24.0,
+                ),
+                child: _buildCartSection(context),
+              ),
             ),
           ),
         ],
@@ -126,6 +136,28 @@ Widget _buildMenuItemsSection(BuildContext context) {
         );
       },
     ),
+  );
+}
+
+Widget _buildCartSection(BuildContext context) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const Text(
+        'My Cart',
+        style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.w700,
+          color: Color(0xFF07143B),
+          height: 1.2,
+          letterSpacing: -0.5,
+        ),
+      ),
+      const SizedBox(height: 24),
+      const Divider(
+          height: 1, color: Color(0xFFE3E1E1)
+      ),
+    ],
   );
 }
 

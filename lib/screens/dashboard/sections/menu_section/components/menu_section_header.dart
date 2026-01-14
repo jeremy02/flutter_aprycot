@@ -20,7 +20,7 @@ class MenuSectionHeader extends StatelessWidget {
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w700,
-              color: Color(0xFF1A1A2E),
+              color: Color(0xFF07143B),
               height: 1.2,
               letterSpacing: -0.5,
             ),
@@ -37,8 +37,9 @@ class MenuSectionHeader extends StatelessWidget {
                     Text(
                       'View All',
                       style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF000000),
                       ),
                     ),
                     SizedBox(
