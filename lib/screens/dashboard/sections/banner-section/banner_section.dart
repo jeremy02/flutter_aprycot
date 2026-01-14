@@ -6,7 +6,7 @@ class BannerSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: double.infinity, // TODO - Check if can be removed
       height: 320,
       child: Padding(
           padding: EdgeInsets.all(20.0),

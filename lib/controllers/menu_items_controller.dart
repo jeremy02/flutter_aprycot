@@ -7,40 +7,32 @@ import '../models/menu_items/menu_item.dart';
 class MenuItemsController extends GetxController {
   final selectedIndex = 1.obs;
   final cartItems = <CartItem>[].obs;
+  final canCheckout = false.obs;
+  final totalPrice = 0.0.obs;
+
   final ScrollController scrollController = ScrollController();
 
   List<MenuItem> get menuItems => MenuItems.items;
 
-  // dynamic width / spacing for the menu items
+  // handle dynamic width and spacing
   double _itemWidth = 200;
   double _spacing = 16;
 
   double get itemWidth => _itemWidth;
   double get spacing => _spacing;
 
-  // compute item width based on available panel width
-  void computeItemWidth(double panelWidth) {
-    const minItemWidth = 190.0;
-    const spacing = 16.0;
-
-    double visibleItems;
-    if ((panelWidth / minItemWidth) < 4.3) {
-      visibleItems = 3.3; // items to show for a smaller panel
-    } else {
-      visibleItems = 4; // items to show for a larger panel
-    }
-
-    _itemWidth = (panelWidth - spacing * (visibleItems - 1)) / visibleItems;
-    _spacing = spacing;
-  }
-
   @override
   void onInit() {
     super.onInit();
-    addToCart(0);
-    addToCart(2);
-    addToCart(2);
-    addToCart(3);
+
+    // add default items
+    // addToCart(0);
+    // addToCart(2);
+    // addToCart(2);
+    // addToCart(3);
+
+    // update canCheckout & totalPrice whenever cart changes
+    ever(cartItems, (_) => _updateCartState());
 
     scrollController.addListener(_onScrollEnd);
   }
@@ -51,7 +43,23 @@ class MenuItemsController extends GetxController {
     super.onClose();
   }
 
-  // select item and snap to center
+  // compute dynamic item width based on panel width
+  void computeItemWidth(double panelWidth) {
+    const minItemWidth = 190.0;
+    const spacing = 16.0;
+
+    double visibleItems;
+    if ((panelWidth / minItemWidth) < 4.3) {
+      visibleItems = 3.3;
+    } else {
+      visibleItems = 4.3;
+    }
+
+    _itemWidth = (panelWidth - spacing * (visibleItems - 1)) / visibleItems;
+    _spacing = spacing;
+  }
+
+  // handle selection & scroll snapping
   void selectItem(int index) {
     selectedIndex.value = index;
     _scrollToIndex(index);
@@ -87,7 +95,7 @@ class MenuItemsController extends GetxController {
     selectItem(index);
   }
 
-  // Cart methods / functionalities
+  // cart management
   void addToCart(int index) {
     final item = menuItems[index];
     final existingIndex =
@@ -110,5 +118,22 @@ class MenuItemsController extends GetxController {
         cartItems.removeAt(cartIndex);
       }
     }
+  }
+
+  void deleteFromCart(int cartIndex) {
+    if (cartIndex >= 0 && cartIndex < cartItems.length) {
+      cartItems.removeAt(cartIndex);
+    }
+  }
+
+  // update reactive cart state
+  void _updateCartState() {
+    // Can checkout if cart has at least 1 item with quantity > 0
+    canCheckout.value =
+        cartItems.isNotEmpty && cartItems.any((item) => item.quantity > 0);
+
+    // Compute total price
+    totalPrice.value =
+        cartItems.fold(0, (sum, item) => sum + (item.menuItem.price * item.quantity));
   }
 }

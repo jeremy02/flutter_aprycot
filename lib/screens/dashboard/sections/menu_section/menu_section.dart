@@ -11,30 +11,31 @@ class MenuSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double containerHeight = 700.0;
 
-    const double containerHeight = 710.0;
+    // initialize controllers
+    final MenuCategoryController categoryController = Get.put(MenuCategoryController());
+    final MenuItemsController itemsController = Get.put(MenuItemsController());
 
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 20.0),
       child: Row(
         children: [
           Flexible(
             flex: 63,
             child: Container(
-              // height: containerHeight,
+              height: containerHeight,
               width: double.infinity,
               color: Colors.yellow,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 10),
                   const MenuSectionHeader(),
                   const SizedBox(height: 32),
-                  _buildMenuCategorySection(context),
+                  _MenuCategorySection(controller: categoryController),
                   const SizedBox(height: 32),
-                  _buildMenuItemsSection(context),
-                  // const SizedBox(height: 16),
+                  _MenuItemsSection(controller: itemsController),
                 ],
               ),
             ),
@@ -42,19 +43,7 @@ class MenuSection extends StatelessWidget {
           const SizedBox(width: 20),
           Flexible(
             flex: 37,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Container(
-                height: containerHeight,
-                width: double.infinity,
-                // color: Colors.yellow,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 24.0,
-                  horizontal: 24.0,
-                ),
-                child: _buildCartSection(context),
-              ),
-            ),
+            child: _CartSection(containerHeight: containerHeight, controller: itemsController)
           ),
         ],
       ),
@@ -62,103 +51,166 @@ class MenuSection extends StatelessWidget {
   }
 }
 
-Widget _buildMenuCategorySection(BuildContext context) {
-  final MenuCategoryController controller = Get.put(MenuCategoryController());
+/// Menu Categories Horizontal List
+class _MenuCategorySection extends StatelessWidget {
+  final MenuCategoryController controller;
 
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: 248, maxHeight: 248),
-      child: ListView.builder(
-        controller: controller.scrollController,
-        scrollDirection: Axis.horizontal,
-        itemCount: controller.categories.length,
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.only(
-              right: index < controller.categories.length - 1 ? 24 : 0,
+  const _MenuCategorySection({required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: 248, maxHeight: 248),
+        child: ListView.builder(
+          controller: controller.scrollController,
+          scrollDirection: Axis.horizontal,
+          itemCount: controller.categories.length,
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          itemBuilder: (context, index) {
+            // Wrap only the card in Obx
+            return Padding(
+              padding: EdgeInsets.only(right: index < controller.categories.length - 1 ? 24 : 0),
+              child: Obx(() {
+                final isSelected = controller.selectedIndex.value == index;
+                return MenuCategoryCard(
+                  category: controller.categories[index],
+                  isSelected: isSelected,
+                  onTap: () => controller.selectCategory(index, context),
+                );
+              }),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+/// Menu Items Horizontal List
+class _MenuItemsSection extends StatelessWidget {
+  final MenuItemsController controller;
+
+  const _MenuItemsSection({required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          controller.computeItemWidth(constraints.maxWidth);
+
+          return ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: 300, maxHeight: 320),
+            child: ListView.builder(
+              controller: controller.scrollController,
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              itemCount: controller.menuItems.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                      right: index == controller.menuItems.length - 1 ? 0 : controller.spacing),
+                  child: Obx(() {
+                    // Wrap only the item card in Obx
+                    return MenuItemsCard(
+                      width: controller.itemWidth,
+                      item: controller.menuItems[index],
+                      isSelected: controller.selectedIndex.value == index,
+                      onTap: () => controller.selectItem(index),
+                      onAddTap: () => controller.addToCart(index),
+                    );
+                  }),
+                );
+              },
             ),
-            child: Obx(() {
-              final isSelected = controller.selectedIndex.value == index;
-              return MenuCategoryCard(
-                category: controller.categories[index],
-                isSelected: isSelected,
-                onTap: () => controller.selectCategory(index, context),
-              );
-            }),
           );
         },
       ),
-    ),
-  );
+    );
+  }
 }
 
-Widget _buildMenuItemsSection(BuildContext context) {
-  final MenuItemsController controller = Get.put(MenuItemsController());
+/// Cart Section
+class _CartSection extends StatelessWidget {
+  final double containerHeight;
+  final MenuItemsController controller;
 
-  return Padding(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 16,
-    ),
-    child: LayoutBuilder(
-      builder: (context, constraints) {
-        // here we compute dynamic item width based on available panel width
-        controller.computeItemWidth(constraints.maxWidth);
+  const _CartSection({required this.containerHeight, required this.controller});
 
-        return ConstrainedBox(
-          constraints: const BoxConstraints(
-            minHeight: 300,
-            maxHeight: 320,
-          ),
-          child: ListView.builder(
-            controller: controller.scrollController,
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(),
-            itemCount: controller.menuItems.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.only(
-                  right: index == controller.menuItems.length - 1
-                      ? 0
-                      : controller.spacing,
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          height: containerHeight,
+          color: Colors.white,
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'My Cart',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xFF07143B),
+                  height: 1.2,
+                  letterSpacing: -0.5,
                 ),
-                child: Obx(() => MenuItemsCard(
-                  width: controller.itemWidth,
-                  item: controller.menuItems[index],
-                  isSelected: controller.selectedIndex.value == index,
-                  onTap: () => controller.selectItem(index),
-                  onAddTap: () => controller.addToCart(index),
-                )),
-              );
-            },
+              ),
+              const SizedBox(height: 24),
+              const Divider(height: 1, color: Color(0xFFE3E1E1)),
+              const SizedBox(height: 24),
+              Expanded(
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.blue,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Obx(() {
+                return SizedBox(
+                  width: double.infinity,
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: controller.canCheckout.value ? () {
+                        print('Checkout: ${controller.totalPrice.toStringAsFixed(2)}');
+                      } : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFEA6A12),
+                        foregroundColor: Colors.white,
+                        // disabledBackgroundColor: const Color(0xFFE0E0E0),
+                        // disabledForegroundColor: Colors.white,
+                        padding: const EdgeInsets.all(16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        elevation: 0,
+                      ),
+                      child: const Text(
+                        'Checkout',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.normal,
+                          letterSpacing: 0.1,
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },),
+              // const SizedBox(height: 24), TODO - Check if we can remove this entirely
+            ],
           ),
-        );
-      },
-    ),
-  );
-}
-
-Widget _buildCartSection(BuildContext context) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const Text(
-        'My Cart',
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.w700,
-          color: Color(0xFF07143B),
-          height: 1.2,
-          letterSpacing: -0.5,
         ),
       ),
-      const SizedBox(height: 24),
-      const Divider(
-          height: 1, color: Color(0xFFE3E1E1)
-      ),
-    ],
-  );
+    );
+  }
 }
-
 
