@@ -11,6 +11,9 @@ class MenuSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    const double containerHeight = 690.0;
+
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Row(
@@ -18,7 +21,7 @@ class MenuSection extends StatelessWidget {
           Flexible(
             flex: 63,
             child: Container(
-              height: 690,
+              height: containerHeight,
               width: double.infinity,
               color: Colors.yellow,
               child: Column(
@@ -38,7 +41,7 @@ class MenuSection extends StatelessWidget {
           Flexible(
             flex: 37,
             child: Container(
-              height: 690,
+              height: containerHeight,
               width: double.infinity,
               color: Colors.yellow,
             ),
