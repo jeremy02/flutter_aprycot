@@ -27,7 +27,7 @@ class CartItemCard extends StatelessWidget {
             right: 0,
             bottom: 0,
             child: Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 left: imageOverlap + 16,
                 right: 12,
                 top: 12,
@@ -38,11 +38,10 @@ class CartItemCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(36),
               ),
               child: Padding(
-                padding: EdgeInsets.only(
-                  left: 10, right: 16,
-                ),
+                padding: const EdgeInsets.only(left: 10, right: 16),
                 child: Row(
                   children: [
+                    // Item name & quantity
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,29 +81,35 @@ class CartItemCard extends StatelessWidget {
                         ],
                       ),
                     ),
+
                     const SizedBox(width: 4),
+
+                    // Price & Delete
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        InkWell(
-                          onTap: onDelete,
+                        Material(
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.circular(20),
-                          child: Container(
-                            padding: const EdgeInsets.all(4),
-                            child: Image.asset(
-                              'images/delete_icon.png',
-                              fit: BoxFit.cover,
-                              color: Color(0xFFE60A0A),
-                              width: 20,
-                              height: 20,
+                          child: InkWell(
+                            onTap: onDelete,
+                            borderRadius: BorderRadius.circular(20),
+                            splashColor: Colors.red.withOpacity(0.2),
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              child: Image.asset(
+                                'images/delete_icon.png',
+                                fit: BoxFit.cover,
+                                color: const Color(0xFFE60A0A),
+                                width: 20,
+                                height: 20,
+                              ),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                            right: 4.0,
-                          ),
+                          padding: const EdgeInsets.only(right: 4.0),
                           child: RichText(
                             textAlign: TextAlign.center,
                             text: TextSpan(
@@ -114,9 +119,10 @@ class CartItemCard extends StatelessWidget {
                                 color: Color(0xFF1A1A2E),
                               ),
                               children: [
-                                TextSpan(text: '\$'), // total Price (price × quantity)
+                                const TextSpan(text: '\$'),
                                 TextSpan(
-                                  text: (cartItem.menuItem.price * cartItem.quantity).toStringAsFixed(2),
+                                  text: (cartItem.menuItem.price * cartItem.quantity)
+                                      .toStringAsFixed(2),
                                   style: const TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
@@ -140,7 +146,7 @@ class CartItemCard extends StatelessWidget {
             child: Container(
               width: imageSize,
               height: imageSize,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
                 boxShadow: [
@@ -148,13 +154,15 @@ class CartItemCard extends StatelessWidget {
                     color: Color(0xFFE60A0A),
                     blurRadius: 12,
                     spreadRadius: 2,
-                    offset: const Offset(2, 4),
+                    offset: Offset(2, 4),
                   ),
                 ],
               ),
-              child: Image.asset(
-                cartItem.menuItem.imagePath,
-                fit: BoxFit.cover,
+              child: ClipOval(
+                child: Image.asset(
+                  cartItem.menuItem.imagePath,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
