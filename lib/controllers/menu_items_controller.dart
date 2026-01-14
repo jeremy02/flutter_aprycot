@@ -25,12 +25,6 @@ class MenuItemsController extends GetxController {
   void onInit() {
     super.onInit();
 
-    // add default items
-    // addToCart(0);
-    // addToCart(2);
-    // addToCart(2);
-    // addToCart(3);
-
     // update canCheckout & totalPrice whenever cart changes
     ever(cartItems, (_) => _updateCartState());
 
