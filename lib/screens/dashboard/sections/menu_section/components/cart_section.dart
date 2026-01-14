@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../controllers/menu_items_controller.dart';
+import 'empty_cart.dart';
 
 class CartSection extends StatelessWidget {
   final double containerHeight;
@@ -35,11 +36,12 @@ class CartSection extends StatelessWidget {
               const Divider(height: 1, color: Color(0xFFE3E1E1)),
               const SizedBox(height: 24),
               Expanded(
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  color: Colors.blue,
-                ),
+                child: EmptyCart(),
+                // Container(
+                //   width: double.infinity,
+                //   height: double.infinity,
+                //   color: Colors.blue,
+                // ),
               ),
               const SizedBox(height: 16),
               Obx(() {
@@ -81,4 +83,3 @@ class CartSection extends StatelessWidget {
     );
   }
 }
-
