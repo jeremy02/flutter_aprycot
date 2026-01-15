@@ -24,10 +24,9 @@ class MenuSection extends StatelessWidget {
         children: [
           Flexible(
             flex: 63,
-            child: Container(
+            child: SizedBox(
               height: containerHeight,
               width: double.infinity,
-              color: Colors.yellow,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -35,7 +34,8 @@ class MenuSection extends StatelessWidget {
                   const MenuSectionHeader(),
                   const SizedBox(height: 32),
                   _MenuCategorySection(controller: categoryController),
-                  const SizedBox(height: 32),
+                  // const SizedBox(height: 32),
+                  const Spacer(),
                   _MenuItemsSection(controller: itemsController),
                 ],
               ),

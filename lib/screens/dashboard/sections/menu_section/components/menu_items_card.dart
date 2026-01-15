@@ -28,10 +28,10 @@ class MenuItemsCard extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Positioned(
-            top: imageOverlap,
+            top: imageOverlap + 20,
             left: 0,
             right: 0,
-            // bottom: 0,
+            bottom: 2,
             child: Material(
               color: isSelected ? const Color(0xFFEA6A12) : Colors.white,
               borderRadius: BorderRadius.circular(24),
@@ -167,7 +167,7 @@ class MenuItemsCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 0,
+            top: 20,
             left: 0,
             right: 0,
             child: Center(
