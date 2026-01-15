@@ -46,8 +46,11 @@ class MenuSection extends StatelessWidget {
         ),
         const SizedBox(width: 10),
         Flexible(
-            flex: 37,
-            child: CartSection(containerHeight: containerHeight, controller: itemsController)
+          flex: 37,
+          child: CartSection(
+            containerHeight: containerHeight,
+            controller: itemsController
+          ),
         ),
       ],
     );
@@ -119,7 +122,6 @@ class _MenuItemsSection extends StatelessWidget {
                   padding: EdgeInsets.only(
                       right: index == controller.menuItems.length - 1 ? 0 : controller.spacing),
                   child: Obx(() {
-                    // Wrap only the item card in Obx
                     return MenuItemsCard(
                       width: controller.itemWidth,
                       item: controller.menuItems[index],

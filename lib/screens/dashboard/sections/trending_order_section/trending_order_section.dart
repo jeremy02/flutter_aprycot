@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../components/dashboard/section_header.dart';
+import '../../../../controllers/categories_controller.dart';
 import '../../../../controllers/menu_items_controller.dart';
+import 'components/categories_section.dart';
 import 'components/trending_order_card.dart';
 
 class TrendingOrderSection extends StatelessWidget {
@@ -11,11 +13,15 @@ class TrendingOrderSection extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // initialize controllers
+    final CategoriesController categoriesController = Get.put(CategoriesController());
     final MenuItemsController trendingItemsController = Get.put(MenuItemsController());
 
     const double containerHeight = 686.0;
 
     return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Flexible(
           flex: 63,
@@ -41,10 +47,8 @@ class TrendingOrderSection extends StatelessWidget {
         const SizedBox(width: 10),
         Flexible(
           flex: 37,
-          child: Container(
-            width: double.infinity,
-            height: containerHeight,
-            color: Colors.yellow,
+          child: CategoriesSection(
+            controller: categoriesController
           ),
         ),
       ],
