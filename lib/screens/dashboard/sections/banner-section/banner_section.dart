@@ -9,7 +9,7 @@ class BannerSection extends StatelessWidget {
       width: double.infinity, // TODO - Check if can be removed
       height: 320,
       child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: EdgeInsets.fromLTRB(24.0, 20.0, 20.0, 0.0),
           child: Row(
             children: [
               Flexible(

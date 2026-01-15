@@ -18,42 +18,36 @@ class MenuSection extends StatelessWidget {
     final MenuCategoryController categoryController = Get.put(MenuCategoryController());
     final MenuItemsController itemsController = Get.put(MenuItemsController());
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 24.0,
-        // horizontal: 20.0,
-      ),
-      child: Row(
-        children: [
-          Flexible(
-            flex: 63,
-            child: SizedBox(
-              height: containerHeight,
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 10),
-                  SectionHeader(
-                    sectionHeaderTitle: 'Menu Category',
-                    onClickViewAll: () => print('View all menu categories'),
-                  ),
-                  const SizedBox(height: 32),
-                  _MenuCategorySection(controller: categoryController),
-                  // const SizedBox(height: 32),
-                  const Spacer(),
-                  _MenuItemsSection(controller: itemsController),
-                ],
-              ),
+    return Row(
+      children: [
+        Flexible(
+          flex: 63,
+          child: SizedBox(
+            height: containerHeight,
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 10),
+                SectionHeader(
+                  sectionHeaderTitle: 'Menu Category',
+                  onClickViewAll: () => print('View all menu categories'),
+                ),
+                const SizedBox(height: 32),
+                _MenuCategorySection(controller: categoryController),
+                // const SizedBox(height: 32),
+                const Spacer(),
+                _MenuItemsSection(controller: itemsController),
+              ],
             ),
           ),
-          const SizedBox(width: 10),
-          Flexible(
-              flex: 37,
-              child: CartSection(containerHeight: containerHeight, controller: itemsController)
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(width: 10),
+        Flexible(
+            flex: 37,
+            child: CartSection(containerHeight: containerHeight, controller: itemsController)
+        ),
+      ],
     );
   }
 }
@@ -106,7 +100,7 @@ class _MenuItemsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.only(left: 24, right: 16),
       child: LayoutBuilder(
         builder: (context, constraints) {
           controller.computeItemWidth(constraints.maxWidth);
