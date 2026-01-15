@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../models/menu_category/menu_category_item.dart';
-import 'arrow_icon_button.dart';
+import '../../../../../components/dashboard/arrow_icon_button.dart';
 
 class MenuCategoryCard extends StatelessWidget {
   final MenuCategoryItem category;

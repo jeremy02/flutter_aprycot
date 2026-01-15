@@ -28,7 +28,7 @@ class CartItemCard extends StatelessWidget {
             bottom: 0,
             child: Container(
               padding: const EdgeInsets.only(
-                left: imageOverlap + 16,
+                left: imageOverlap + 24,
                 right: 12,
                 top: 12,
                 bottom: 12,
@@ -81,10 +81,7 @@ class CartItemCard extends StatelessWidget {
                         ],
                       ),
                     ),
-
                     const SizedBox(width: 4),
-
-                    // Price & Delete
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -143,26 +140,42 @@ class CartItemCard extends StatelessWidget {
           Positioned(
             left: 0,
             top: -5,
-            child: Container(
+            child: SizedBox(
               width: imageSize,
               height: imageSize,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xFFE60A0A),
-                    blurRadius: 12,
-                    spreadRadius: 2,
-                    offset: Offset(2, 4),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: imageSize,
+                    height: imageSize,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xFFE60A0A),
+                          blurRadius: 12,
+                          spreadRadius: 2,
+                          offset: const Offset(6, 0), // push shadow to right
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: imageSize,
+                    height: imageSize,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        cartItem.menuItem.imagePath,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                 ],
-              ),
-              child: ClipOval(
-                child: Image.asset(
-                  cartItem.menuItem.imagePath,
-                  fit: BoxFit.cover,
-                ),
               ),
             ),
           ),

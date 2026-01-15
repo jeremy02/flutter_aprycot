@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'arrow_icon_button.dart';
 
-class MenuSectionHeader extends StatelessWidget {
-  const MenuSectionHeader({super.key});
+class SectionHeader extends StatelessWidget {
+  final String sectionHeaderTitle;
+  final VoidCallback onClickViewAll;
+
+  const SectionHeader({super.key, required this.sectionHeaderTitle, required this.onClickViewAll});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +17,8 @@ class MenuSectionHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text(
-            'Menu Category',
+          Text(
+            sectionHeaderTitle,
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w700,
@@ -27,7 +30,7 @@ class MenuSectionHeader extends StatelessWidget {
           Material(
             color: Colors.transparent,
             child: InkWell(
-              onTap: () {},
+              onTap: onClickViewAll,
               child: Padding(
                 padding: EdgeInsets.all(4.0),
                 child: Row(

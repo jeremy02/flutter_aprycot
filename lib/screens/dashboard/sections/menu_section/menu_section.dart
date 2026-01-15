@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../components/dashboard/section_header.dart';
 import '../../../../controllers/menu_category_controller.dart';
 import '../../../../controllers/menu_items_controller.dart';
 import 'components/cart_section.dart';
 import 'components/menu_category_card.dart';
 import 'components/menu_items_card.dart';
-import 'components/menu_section_header.dart';
 
 class MenuSection extends StatelessWidget {
   const MenuSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const double containerHeight = 700.0;
+    const double containerHeight = 686.0;
 
     // initialize controllers
     final MenuCategoryController categoryController = Get.put(MenuCategoryController());
@@ -34,7 +34,10 @@ class MenuSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 10),
-                  const MenuSectionHeader(),
+                  SectionHeader(
+                    sectionHeaderTitle: 'Menu Category',
+                    onClickViewAll: () => print('View all menu categories'),
+                  ),
                   const SizedBox(height: 32),
                   _MenuCategorySection(controller: categoryController),
                   // const SizedBox(height: 32),
