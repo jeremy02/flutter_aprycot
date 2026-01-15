@@ -4,6 +4,9 @@ class MenuItem {
   final double? originalPrice;
   final double rating;
   final String imagePath;
+  final int? calories;
+  final int? persons;
+  final String? badge;
 
   MenuItem({
     required this.name,
@@ -11,5 +14,8 @@ class MenuItem {
     this.originalPrice,
     required this.rating,
     required this.imagePath,
+    this.calories,
+    this.persons,
+    this.badge,
   });
 }
