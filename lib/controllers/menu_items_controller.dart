@@ -6,6 +6,7 @@ import '../models/menu_items/menu_item.dart';
 
 class MenuItemsController extends GetxController {
   final selectedIndex = 1.obs;
+  final trendingItemsSelectedIndex = 2.obs;
   final cartItems = <CartItem>[].obs;
   final canCheckout = false.obs;
   final totalPrice = 0.0.obs;
@@ -13,6 +14,7 @@ class MenuItemsController extends GetxController {
   final ScrollController scrollController = ScrollController();
 
   List<MenuItem> get menuItems => MenuItems.items;
+  List<MenuItem> get trendingOrderItems => MenuItems.trendingOrderItems;
 
   // handle dynamic width and spacing
   double _itemWidth = 200;
@@ -55,9 +57,15 @@ class MenuItemsController extends GetxController {
     _spacing = spacing;
   }
 
-  // handle selection & scroll snapping
+  // handle selection & scroll snapping for menu items
   void selectItem(int index) {
     selectedIndex.value = index;
+    _scrollToIndex(index);
+  }
+
+  // handle selection & scroll snapping for trending order items
+  void selectTrendingOrderItem(int index) {
+    trendingItemsSelectedIndex.value = index;
     _scrollToIndex(index);
   }
 
