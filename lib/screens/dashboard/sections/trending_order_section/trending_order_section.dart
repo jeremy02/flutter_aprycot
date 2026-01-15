@@ -21,6 +21,8 @@ class TrendingOrderSection extends StatelessWidget {
                 const SizedBox(height: 10),
                 SectionHeader(
                   sectionHeaderTitle: 'Trending Orders',
+                  sectionHeaderFontSize: 32,
+                  sectionHeaderPadding: const EdgeInsets.fromLTRB(36, 8, 16, 8),
                   onClickViewAll: () => print('View all trending orders'),
                 ),
                 const SizedBox(height: 32),

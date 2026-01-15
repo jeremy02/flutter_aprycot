@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../components/dashboard/section_header.dart';
 import '../../../../../controllers/menu_items_controller.dart';
 import 'cart_item_card.dart';
 import 'empty_cart.dart';
@@ -24,18 +25,11 @@ class CartSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 24),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: const Text(
-                  'My Cart',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF07143B),
-                    height: 1.2,
-                    letterSpacing: -0.5,
-                  ),
-                ),
+              SectionHeader(
+                sectionHeaderTitle: 'My Cart',
+                sectionHeaderFontSize: 20,
+                sectionHeaderPadding: const EdgeInsets.symmetric(horizontal: 24.0),
+                onClickViewAll: null,
               ),
               const SizedBox(height: 24),
               Padding(

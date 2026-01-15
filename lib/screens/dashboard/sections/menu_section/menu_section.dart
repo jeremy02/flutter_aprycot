@@ -31,6 +31,8 @@ class MenuSection extends StatelessWidget {
                 const SizedBox(height: 10),
                 SectionHeader(
                   sectionHeaderTitle: 'Menu Category',
+                  sectionHeaderFontSize: 32,
+                  sectionHeaderPadding: const EdgeInsets.fromLTRB(36, 8, 16, 8),
                   onClickViewAll: () => print('View all menu categories'),
                 ),
                 const SizedBox(height: 32),
