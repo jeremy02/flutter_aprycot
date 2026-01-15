@@ -7,9 +7,8 @@ class MenuSectionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: 8.0,
-        horizontal: 16,
+      padding: EdgeInsets.fromLTRB(
+        36, 8, 16, 8,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

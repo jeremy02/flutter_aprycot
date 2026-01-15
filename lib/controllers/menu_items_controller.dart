@@ -16,7 +16,7 @@ class MenuItemsController extends GetxController {
 
   // handle dynamic width and spacing
   double _itemWidth = 200;
-  double _spacing = 16;
+  double _spacing = 20;
 
   double get itemWidth => _itemWidth;
   double get spacing => _spacing;
@@ -40,7 +40,6 @@ class MenuItemsController extends GetxController {
   // compute dynamic item width based on panel width
   void computeItemWidth(double panelWidth) {
     const minItemWidth = 190.0;
-    const spacing = 16.0;
 
     double visibleItems;
     if ((panelWidth / minItemWidth) < 4.3) {
@@ -48,6 +47,9 @@ class MenuItemsController extends GetxController {
     } else {
       visibleItems = 4.3;
     }
+
+    // final double spacing = visibleItems == 3.3 ? 24.0 : 20.0;
+    final double spacing = visibleItems == 3.3 ? 20.0 : 20.0;
 
     _itemWidth = (panelWidth - spacing * (visibleItems - 1)) / visibleItems;
     _spacing = spacing;

@@ -19,7 +19,10 @@ class MenuSection extends StatelessWidget {
     final MenuItemsController itemsController = Get.put(MenuItemsController());
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(
+        vertical: 24.0,
+        // horizontal: 20.0,
+      ),
       child: Row(
         children: [
           Flexible(
@@ -41,10 +44,10 @@ class MenuSection extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 20),
+          const SizedBox(width: 10),
           Flexible(
-            flex: 37,
-            child: CartSection(containerHeight: containerHeight, controller: itemsController)
+              flex: 37,
+              child: CartSection(containerHeight: containerHeight, controller: itemsController)
           ),
         ],
       ),
@@ -61,7 +64,9 @@ class _MenuCategorySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.only(
+        left: 36, right: 16
+      ),
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: 248, maxHeight: 248),
         child: ListView.builder(
