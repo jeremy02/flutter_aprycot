@@ -67,7 +67,7 @@ class MenuItemsController extends GetxController {
   // handle selection & scroll snapping for trending order items
   void selectTrendingOrderItem(int index) {
     trendingItemsSelectedIndex.value = index;
-    _scrollToIndex(index);
+    // _scrollToIndex(index);
   }
 
   void _scrollToIndex(int index) {

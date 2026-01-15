@@ -86,8 +86,8 @@ class _TrendingOrdersListSection extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Obx(() => TrendingOrderCard(
                   trendingOrder: controller.trendingOrderItems[index],
-                  isSelected: controller.selectedIndex.value == index,
-                  onTap: () => controller.selectItem(index),
+                  isSelected: controller.trendingItemsSelectedIndex.value == index,
+                  onTap: () => controller.selectTrendingOrderItem(index),
                   onAddTap: () => controller.addToCart(index),
                 ));
               },
