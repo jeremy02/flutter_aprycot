@@ -68,51 +68,26 @@ class _TrendingOrdersListSection extends StatelessWidget {
         ),
         child: LayoutBuilder(
           builder: (context, constraints) {
-            const spacing = 20.0;
-            const imageOverhang = 50.0;
-            const minCardContentWidth = 220.0;
-            const baseCardHeight = 220.0;
-
-            const totalCardWidth = minCardContentWidth + imageOverhang + 10;
-
-            int crossAxisCount;
-            int itemCount;
-
-            if (constraints.maxWidth >= (totalCardWidth * 3 + spacing * 2)) {
-              crossAxisCount = 3;
-              itemCount = 6;
-            } else {
-              crossAxisCount = 2;
-              itemCount = 6;
-            }
-
-            final totalSpacing = spacing * (crossAxisCount - 1);
-            final availableWidth = constraints.maxWidth - totalSpacing;
-            final cardWidth = availableWidth / crossAxisCount;
-
-            // 🔑 dynamic height
-            double cardHeight = baseCardHeight;
-            if (cardWidth < 260) cardHeight += 16;
-            if (cardWidth < 220) cardHeight += 24;
-
-            final childAspectRatio = (cardWidth / cardHeight)  + (crossAxisCount == 3 ? 0.09 : 0.10);
-            // final childAspectRatio = (cardWidth / cardHeight);
+            final gridCalculator = controller.gridCalculator(constraints.maxWidth);
+            final crossAxisCount = gridCalculator.getCrossAxisCount();
+            final itemCount = gridCalculator.getItemCount();
+            final childAspectRatio = gridCalculator.getChildAspectRatio();
 
             return GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: crossAxisCount,
-                crossAxisSpacing: spacing,
-                mainAxisSpacing: spacing,
+                crossAxisSpacing: gridCalculator.getSpacing,
+                mainAxisSpacing: gridCalculator.getSpacing,
                 childAspectRatio: childAspectRatio,
               ),
               itemCount: itemCount,
               itemBuilder: (context, index) {
                 return Obx(() => TrendingOrderCard(
                   trendingOrder: controller.trendingOrderItems[index],
-                  isSelected: controller.trendingItemsSelectedIndex.value == index,
-                  onTap: () => controller.selectTrendingOrderItem(index),
+                  isSelected: controller.selectedIndex.value == index,
+                  onTap: () => controller.selectItem(index),
                   onAddTap: () => controller.addToCart(index),
                 ));
               },

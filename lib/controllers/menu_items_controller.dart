@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../models/menu_items/cart_item.dart';
 import '../models/menu_items/data/menu_items.dart';
 import '../models/menu_items/menu_item.dart';
+import '../utils/responsive_grid_calculator.dart';
 
 class MenuItemsController extends GetxController {
   final selectedIndex = 1.obs;
@@ -139,5 +140,10 @@ class MenuItemsController extends GetxController {
     // Compute total price
     totalPrice.value =
         cartItems.fold(0, (sum, item) => sum + (item.menuItem.price * item.quantity));
+  }
+
+  // get the responsive grid calculator
+  ResponsiveGridCalculator gridCalculator(double containerWidth) {
+    return ResponsiveGridCalculator(containerWidth: containerWidth);
   }
 }
