@@ -78,7 +78,7 @@ class MenuItems {
       calories: 50,
       persons: 5,
       badge: 'Top of the week',
-      imagePath: 'images/trending_items/trending_image_italian_salad_4.png',
+      imagePath: 'images/menu_items/menu_item_spaghetti.png',
     ),
     MenuItem(
       name: 'Italian Salad',
@@ -87,7 +87,7 @@ class MenuItems {
       calories: 70,
       persons: 6,
       badge: 'Top of the month',
-      imagePath: 'images/trending_items/trending_image_italian_salad_5.png',
+      imagePath: 'images/menu_items/menu_item_vegetable_pizza.png',
     ),
     MenuItem(
       name: 'Italian Salad',
@@ -96,7 +96,7 @@ class MenuItems {
       calories: 80,
       persons: 4,
       badge: 'Top of the day',
-      imagePath: 'images/trending_items/trending_image_italian_salad_6.png',
+      imagePath: 'images/menu_items/menu_item_sweets.png',
     ),
   ];
 }
