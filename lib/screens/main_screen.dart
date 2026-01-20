@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter_sidebar_x/utils/responsive.dart';
 import '../../controllers/app_menu_controller.dart';
 import '../components/navigation/navigation_rail_widget.dart';
+import 'authentication/sign-in-screen/sign_in_screen.dart';
 import 'dashboard/dashboard_screen.dart';
 import 'default/default_page_widget.dart';
 
@@ -75,12 +76,17 @@ class MainScreen extends StatelessWidget {
           color: Color(0xFFFFf5EE),
         ),
         child: Obx(() {
-          // Show DashboardScreen for dashboard on desktop
-          if (controller.selectedSubmenuId.value == "dashboard" &&
-              Responsive.isDesktop(context)) {
-            return SingleChildScrollView(
-              child: DashboardScreen(),
-            );
+          // show screens if on desktop else show DefaultPageWidget
+          if(Responsive.isDesktop(context)) {
+            if (controller.selectedSubmenuId.value == "dashboard"){
+              return SingleChildScrollView(
+                child: DashboardScreen(),
+              );
+            } else if (controller.selectedSubmenuId.value == "authentication"){
+              return SingleChildScrollView(
+                child: SignInScreen(),
+              );
+            }
           }
 
           // Default empty page for other selections
