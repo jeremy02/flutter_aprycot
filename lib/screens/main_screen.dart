@@ -4,6 +4,7 @@ import 'package:flutter_sidebar_x/utils/responsive.dart';
 import '../../controllers/app_menu_controller.dart';
 import '../components/navigation/navigation_rail_widget.dart';
 import 'dashboard/dashboard_screen.dart';
+import 'default/default_page_widget.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
@@ -83,23 +84,7 @@ class MainScreen extends StatelessWidget {
           }
 
           // Default empty page for other selections
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.dashboard_outlined,
-                    size: 64, color: Colors.grey.shade400),
-                const SizedBox(height: 16),
-                Text(
-                  controller.currentPage.value,
-                  style: const TextStyle(
-                      fontSize: 32, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                Text('Welcome to ${controller.currentPage.value} section'),
-              ],
-            ),
-          );
+          return DefaultPageWidget(sectionTitle: controller.currentPage.value);
         }),
       ),
     );
