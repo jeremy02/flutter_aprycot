@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sidebar_x/utils/responsive.dart';
 import 'package:get/get.dart';
+import 'package:flutter_sidebar_x/utils/responsive.dart';
 import '../../controllers/app_menu_controller.dart';
 import '../components/navigation/navigation_rail_widget.dart';
 import 'dashboard/dashboard_screen.dart';
@@ -12,90 +12,96 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
+    return WillPopScope(
+      onWillPop: controller.handleBackButton,
+      child: Scaffold(
+        body: Obx(() {
+          final showRail = controller.showRail.value;
+
+          return Row(
+            children: [
+              if (showRail) NavigationRailWidget(controller: controller),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (showRail)
+                      _buildHeader(),
+                    _buildContent(context),
+                  ],
+                ),
+              ),
+            ],
+          );
+        }),
+      ),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      color: Colors.white,
+      child: Row(
         children: [
-          NavigationRailWidget(controller: controller),
-          Expanded(
-              child: _buildMainContent(context),
+          IconButton(
+            icon: Obx(() => Icon(
+              controller.isExpanded.value
+                  ? Icons.menu_open
+                  : Icons.menu,
+              color: Colors.grey.shade700,
+            )),
+            onPressed: controller.toggleExpansion,
           ),
+          const SizedBox(width: 16),
+          Obx(() => Text(
+            controller.currentPage.value,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey.shade800,
+            ),
+          )),
         ],
       ),
     );
   }
 
-  Widget _buildMainContent(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          padding: const EdgeInsets.all(16),
-          color: Colors.white,
-          child: Row(
-            children: [
-              Obx(() => IconButton(
-                icon: Icon(
-                  controller.isExpanded.value ? Icons.menu_open : Icons.menu,
-                  color: Colors.grey.shade700,
-                ),
-                onPressed: controller.toggleExpansion,
-              )),
-              const SizedBox(width: 16),
-              Obx(() => Text(
-                controller.currentPage.value,
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey.shade800
-                ),
-              )),
-            ],
-          ),
+  Widget _buildContent(BuildContext context) {
+    return Expanded(
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Color(0xFFFFf5EE),
         ),
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              color: Color(0xFFFFf5EE),
-            ),
-            child: Obx(
-                  () {
-                if (controller.selectedSubmenuId.value == "dashboard" && Responsive.isDesktop(context)) {
-                  // Only show this text when submenu is selected
-                  return SingleChildScrollView(
-                    child: DashboardScreen(),
-                  );
-                }
+        child: Obx(() {
+          // Show DashboardScreen for dashboard on desktop
+          if (controller.selectedSubmenuId.value == "dashboard" &&
+              Responsive.isDesktop(context)) {
+            return SingleChildScrollView(
+              child: DashboardScreen(),
+            );
+          }
 
-                // Otherwise show the full column
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                          Icons.dashboard_outlined,
-                          size: 64,
-                          color: Colors.grey.shade400
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                          controller.currentPage.value,
-                          style:
-                          TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                          )
-                      ),
-                      const SizedBox(height: 8),
-                      Text('Welcome to ${controller.currentPage.value} section'),
-                    ],
-                  ),
-                );
-              },
+          // Default empty page for other selections
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.dashboard_outlined,
+                    size: 64, color: Colors.grey.shade400),
+                const SizedBox(height: 16),
+                Text(
+                  controller.currentPage.value,
+                  style: const TextStyle(
+                      fontSize: 32, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+                Text('Welcome to ${controller.currentPage.value} section'),
+              ],
             ),
-          )
-        ),
-      ],
+          );
+        }),
+      ),
     );
   }
 }

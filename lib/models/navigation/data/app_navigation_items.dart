@@ -31,6 +31,7 @@ class AppNavigationItems {
       iconPath: 'images/nav_menu/ic_authentication.png',
       label: 'Authentication',
       isHeader: false,
+      showRail: false,
       hasSubmenu: false,
     ),
     NavigationItem(

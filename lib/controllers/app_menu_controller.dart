@@ -4,6 +4,7 @@ import '../models/navigation/sub_menu_item.dart';
 import '../models/navigation/data/app_navigation_items.dart';
 
 class AppMenuController extends GetxController {
+  final showRail = true.obs;
   final RxInt selectedIndex = 0.obs;
   final RxString selectedSubmenuId = 'dashboard'.obs;
   final RxBool isExpanded = false.obs;
@@ -11,6 +12,19 @@ class AppMenuController extends GetxController {
   final RxString currentPage = 'Dashboard'.obs;
 
   final List<NavigationItem> navigationItems = AppNavigationItems.items;
+
+  // handle back button press, returns true if app should exit
+  Future<bool> handleBackButton() async {
+    if (selectedSubmenuId.value != 'dashboard') {
+      // Switch to dashboard screen
+      selectedSubmenuId.value = 'dashboard';
+      currentPage.value = 'Dashboard';
+      selectedIndex.value = 1; // index of dashboard in your navigationItems
+      showRail.value = true;   // ensure sidebar is visible
+      return false; // prevent default back action
+    }
+    return true; // allow exit if already on dashboard
+  }
 
   // Toggle sidebar expansion
   void toggleExpansion() {
@@ -23,6 +37,9 @@ class AppMenuController extends GetxController {
     selectedIndex.value = index;
     selectedSubmenuId.value = item.id;
     currentPage.value = item.label;
+
+    // dynamically set showRail based on item property
+    showRail.value = item.showRail;
 
     if (item.hasSubmenu) {
       if (expandedMenus.contains(item.id)) {
@@ -47,6 +64,12 @@ class AppMenuController extends GetxController {
     selectedIndex.value = -1;
     selectedSubmenuId.value = submenu.id;
     currentPage.value = submenu.label;
+
+    // for now all submenus do not hide the rail
+    showRail.value = true;
+
+    // auto-navigate dynamically to route is defined
+    Get.toNamed(submenu.id);
   }
 
   // Check if top-level item is selected

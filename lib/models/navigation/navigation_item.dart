@@ -5,6 +5,7 @@ class NavigationItem {
   final String? iconPath;
   final String label;
   final bool isHeader;
+  final bool showRail;
   final bool hasSubmenu;
   final List<SubmenuItem>? submenuItems;
 
@@ -13,6 +14,7 @@ class NavigationItem {
     this.iconPath,
     required this.label,
     this.isHeader = false,
+    this.showRail = true,
     this.hasSubmenu = false,
     this.submenuItems,
   });
