@@ -4,12 +4,12 @@ class AuthImageItem {
   final String imagePath;
   final double sizeFactor;
   final int minutePosition;
-  final RxBool showImage;
+  final bool showImage;
 
   AuthImageItem({
     required this.imagePath,
     required this.sizeFactor,
     required this.minutePosition,
-    bool showImage = true,
-  }) : showImage = showImage.obs;
+    this.showImage = true,
+  });
 }

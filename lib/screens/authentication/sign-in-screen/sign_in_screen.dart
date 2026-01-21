@@ -17,7 +17,8 @@ class SignInScreen extends StatelessWidget {
           return SingleChildScrollView(
             child: ConstrainedBox(
               constraints: BoxConstraints.tightFor(
-                  height: math.max(800, constraints.maxHeight * 0.9)),
+                  height: math.max(800, constraints.maxHeight * 0.9),
+              ),
               child: Row(
                 children: [
                   // Left panel (can be anything, empty for now)
