@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sidebar_x/screens/dashboard/sections/banner-section/banner_section.dart';
-import 'package:flutter_sidebar_x/screens/dashboard/sections/menu_section/menu_section.dart';
-import 'package:flutter_sidebar_x/screens/dashboard/sections/trending_order_section/trending_order_section.dart';
+import 'sections/user_profile_banner_section/user_profile_banner_section.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -12,11 +10,7 @@ class UserProfileScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          height: 360,
-          width: double.infinity,
-          color: Colors.red,
-        ),
+        UserProfileBannerSection(),
         const SizedBox(height: 24.0,),
       ],
     );
