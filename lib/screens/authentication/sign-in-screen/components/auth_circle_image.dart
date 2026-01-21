@@ -23,7 +23,7 @@ class AuthCircleImage extends StatelessWidget {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.15),
+            color: Color(0xFFE60A0A).withOpacity(0.18),
             blurRadius: shadowBlur,
             offset: Offset(0, shadowOffset),
           ),

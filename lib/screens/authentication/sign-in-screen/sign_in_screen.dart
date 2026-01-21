@@ -17,7 +17,7 @@ class SignInScreen extends StatelessWidget {
           return SingleChildScrollView(
             child: ConstrainedBox(
               constraints: BoxConstraints.tightFor(
-                  height: math.max(800, constraints.maxHeight * 0.9),
+                height: math.max(800, constraints.maxHeight * 0.9),
               ),
               child: Row(
                 children: [
@@ -25,9 +25,17 @@ class SignInScreen extends StatelessWidget {
                   Flexible(
                     flex: 45,
                     child: Container(
+                      padding: const EdgeInsets.fromLTRB(
+                          80, 100, 0, 20
+                      ),
                       color: Colors.red,
                       width: double.infinity,
-                      height: 800,
+                      height: double.infinity,
+                      child: Container(
+                        color: Colors.black,
+                        width: double.infinity,
+                        height: double.infinity,
+                      ),
                     ),
                   ),
                   // Right panel: radial layout
