@@ -4,6 +4,7 @@ import 'components/user_profile_bottom_overlay.dart';
 class UserProfileBannerSection extends StatelessWidget {
   final String backgroundImage;
   final String avatarImage;
+  final String locationImage;
   final String name;
   final String role;
   final String location;
@@ -19,6 +20,7 @@ class UserProfileBannerSection extends StatelessWidget {
     super.key,
     required this.backgroundImage,
     required this.avatarImage,
+    required this.locationImage,
     required this.name,
     required this.role,
     required this.location,
@@ -52,6 +54,7 @@ class UserProfileBannerSection extends StatelessWidget {
                 children: [
                   _ProfileBackgroundImage(imagePath: backgroundImage, borderRadius: borderRadius),
                   UserProfileBottomOverlay(
+                    locationImage: locationImage,
                     borderRadius: borderRadius,
                     avatarSize: avatarSize,
                     overlayPaddingLeft: overlayPaddingLeft,

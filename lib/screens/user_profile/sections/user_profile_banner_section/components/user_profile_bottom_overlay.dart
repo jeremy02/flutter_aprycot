@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'user_profile_stats_card.dart';
 
 class UserProfileBottomOverlay extends StatelessWidget {
+  final String locationImage;
   final double borderRadius;
   final double avatarSize;
   final double overlayPaddingLeft;
@@ -17,6 +18,7 @@ class UserProfileBottomOverlay extends StatelessWidget {
 
   const UserProfileBottomOverlay({
     super.key,
+    required this.locationImage,
     required this.borderRadius,
     required this.avatarSize,
     required this.overlayPaddingLeft,
@@ -36,7 +38,7 @@ class UserProfileBottomOverlay extends StatelessWidget {
       left: 0,
       right: 0,
       bottom: 0,
-      // height: bottomBarHeight, // TODO - Check if we can get rid of this
+      height: bottomBarHeight, // TODO - Check if we can get rid of this
       child: ClipRRect(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(borderRadius),
@@ -45,9 +47,10 @@ class UserProfileBottomOverlay extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
           child: Container(
-            color: Colors.white.withOpacity(0.6),
+            color: Colors.white.withOpacity(0.5),
             padding: EdgeInsets.only(left: overlayPaddingLeft, right: 16, top: 16, bottom: 8),
             child: Row(
+              mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
@@ -67,7 +70,12 @@ class UserProfileBottomOverlay extends StatelessWidget {
                         const SizedBox(height: 4),
                         Row(
                           children: [
-                            const Icon(Icons.location_on, size: 16, color: Color(0xFF07143B)),
+                            Image.asset(
+                              locationImage,
+                              fit: BoxFit.cover,
+                              height: 24,
+                              width: 24,
+                            ),
                             const SizedBox(width: 4),
                             Text(
                               location,

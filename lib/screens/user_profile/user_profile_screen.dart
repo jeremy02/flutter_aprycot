@@ -13,6 +13,7 @@ class UserProfileScreen extends StatelessWidget {
         UserProfileBannerSection(
           backgroundImage: 'images/user_profile/user_profile_banner_image.png',
           avatarImage: 'images/user_profile/user_profile_male_avatar.png',
+          locationImage: 'images/user_profile/navigation_icon.png',
           name: 'Devon Lane',
           role: 'UI/UX Designer',
           location: 'Lisbon, Portugal',
