@@ -86,7 +86,9 @@ class MainScreen extends StatelessWidget {
             } else if (controller.selectedSubmenuId.value == "authentication"){
               return SignInScreen();
             } else if (controller.selectedSubmenuId.value == "user_profile"){
-              return UserProfileScreen();
+              return SingleChildScrollView(
+                child: UserProfileScreen(),
+              );
             }
           }
 
