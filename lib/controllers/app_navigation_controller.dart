@@ -4,12 +4,12 @@ import '../models/navigation/sub_menu_item.dart';
 import '../models/navigation/data/app_navigation_items.dart';
 
 class AppNavigationController extends GetxController {
-  final showRail = false.obs;
+  final showRail = true.obs;
   final RxInt selectedIndex = 0.obs;
-  final RxString selectedSubmenuId = 'authentication'.obs;
+  final RxString selectedSubmenuId = 'user_profile'.obs;
   final RxBool isExpanded = false.obs;
   final RxSet<String> expandedMenus = <String>{}.obs;
-  final RxString currentPage = 'Authentication'.obs;
+  final RxString currentPage = 'User Profile'.obs;
 
   final List<NavigationItem> navigationItems = AppNavigationItems.items;
 

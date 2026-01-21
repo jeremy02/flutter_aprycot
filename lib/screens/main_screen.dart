@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sidebar_x/screens/user_profile/user_profile_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter_sidebar_x/utils/responsive.dart';
 import '../../controllers/app_navigation_controller.dart';
@@ -84,6 +85,8 @@ class MainScreen extends StatelessWidget {
               );
             } else if (controller.selectedSubmenuId.value == "authentication"){
               return SignInScreen();
+            } else if (controller.selectedSubmenuId.value == "user_profile"){
+              return UserProfileScreen();
             }
           }
 
