@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../controllers/app_menu_controller.dart';
+import '../../../controllers/app_navigation_controller.dart';
 
 class NavHeader extends StatelessWidget {
-  final AppMenuController controller;
+  final AppNavigationController controller;
   const NavHeader({super.key, required this.controller});
 
   @override

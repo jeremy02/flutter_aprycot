@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controllers/app_menu_controller.dart';
+import '../../../controllers/app_navigation_controller.dart';
 import '../../../models/navigation/sub_menu_item.dart';
 
 class NavSubmenuItem extends StatelessWidget {
-  final AppMenuController controller;
+  final AppNavigationController controller;
   final SubmenuItem submenu;
 
   const NavSubmenuItem({super.key, required this.controller, required this.submenu});

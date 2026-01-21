@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_sidebar_x/utils/responsive.dart';
-import '../../controllers/app_menu_controller.dart';
+import '../../controllers/app_navigation_controller.dart';
 import '../components/navigation/navigation_rail_widget.dart';
 import 'authentication/sign-in-screen/sign_in_screen.dart';
 import 'dashboard/dashboard_screen.dart';
@@ -10,7 +10,7 @@ import 'default/default_page_widget.dart';
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
 
-  final AppMenuController controller = Get.put(AppMenuController());
+  final AppNavigationController controller = Get.put(AppNavigationController());
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +83,7 @@ class MainScreen extends StatelessWidget {
                 child: DashboardScreen(),
               );
             } else if (controller.selectedSubmenuId.value == "authentication"){
-              return SingleChildScrollView(
-                child: SignInScreen(),
-              );
+              return SignInScreen();
             }
           }
 

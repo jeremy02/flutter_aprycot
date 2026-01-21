@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../controllers/app_menu_controller.dart';
+import '../../../controllers/app_navigation_controller.dart';
 
 class NavSectionHeader extends StatelessWidget {
-  final AppMenuController controller;
+  final AppNavigationController controller;
   final String label;
 
   const NavSectionHeader(

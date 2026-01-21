@@ -3,13 +3,13 @@ import '../models/navigation/navigation_item.dart';
 import '../models/navigation/sub_menu_item.dart';
 import '../models/navigation/data/app_navigation_items.dart';
 
-class AppMenuController extends GetxController {
+class AppNavigationController extends GetxController {
   final showRail = true.obs;
   final RxInt selectedIndex = 0.obs;
-  final RxString selectedSubmenuId = 'dashboard'.obs;
+  final RxString selectedSubmenuId = 'authentication'.obs;
   final RxBool isExpanded = false.obs;
   final RxSet<String> expandedMenus = <String>{}.obs;
-  final RxString currentPage = 'Dashboard'.obs;
+  final RxString currentPage = 'Authentication'.obs;
 
   final List<NavigationItem> navigationItems = AppNavigationItems.items;
 

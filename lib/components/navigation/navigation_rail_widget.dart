@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../controllers/app_menu_controller.dart';
+import '../../controllers/app_navigation_controller.dart';
 import 'components/navigation.dart';
 
 class NavigationRailWidget extends StatelessWidget {
-  final AppMenuController controller;
+  final AppNavigationController controller;
   const NavigationRailWidget({super.key, required this.controller});
 
   @override

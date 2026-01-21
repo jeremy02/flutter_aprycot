@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../controllers/app_menu_controller.dart';
+import '../../../controllers/app_navigation_controller.dart';
 import '../../../models/navigation/navigation_item.dart';
 import 'nav_item_expanded.dart';
 import 'nav_item_collapsed.dart';
 import 'nav_submenu_item.dart';
 
 class NavItem extends StatefulWidget {
-  final AppMenuController controller;
+  final AppNavigationController controller;
   final NavigationItem item;
   final int index;
 

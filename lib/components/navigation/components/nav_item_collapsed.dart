@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../controllers/app_menu_controller.dart';
+import '../../../controllers/app_navigation_controller.dart';
 import '../../../models/navigation/navigation_item.dart';
 
 class NavItemCollapsed extends StatelessWidget {
-  final AppMenuController controller;
+  final AppNavigationController controller;
   final NavigationItem item;
   final int index;
   final bool selected;
