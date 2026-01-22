@@ -66,8 +66,6 @@ class SignInForm extends StatelessWidget {
               labelTextDescription: "Don't have an account? ",
               labelActionText: 'Click here to sign up.',
               onLabelActionTextPressed: () {
-                // navigate to signup
-                print('Sign up clicked');
                 final navController = Get.find<AppNavigationController>();
                 // Navigate to top-level Authentication, Signup screen
                 navController.navigateTo('authentication', pageName: 'Sign Up');
