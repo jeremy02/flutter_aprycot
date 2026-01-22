@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../controllers/app_navigation_controller.dart';
 import '../../../../controllers/authentication_controller.dart';
 import '../../components/auth_checkbox_actions_field.dart';
 import '../../components/auth_footer_section.dart';
@@ -65,7 +66,13 @@ class SignInForm extends StatelessWidget {
               labelTextDescription: "Don't have an account? ",
               labelActionText: 'Click here to sign up.',
               onLabelActionTextPressed: () {
+                // navigate to signup
                 print('Sign up clicked');
+                final navController = Get.find<AppNavigationController>();
+                // Navigate to top-level Authentication
+                // navController.navigateTo('authentication');
+               // Navigate to Signup screen
+                navController.navigateTo('authentication', pageName: 'Sign Up');
               },
             ),
           ],

@@ -32,6 +32,48 @@ class AppNavigationController extends GetxController {
     if (!isExpanded.value) expandedMenus.clear();
   }
 
+  void navigateTo(String submenuId, {String? pageName}) {
+    // first, try to find a top-level item with this id
+    final topItem = navigationItems.firstWhere(
+          (item) => item.id == submenuId,
+      orElse: () => NavigationItem(id: '', label: ''),
+    );
+
+    if (topItem.id.isNotEmpty) {
+      // top-level navigation item found
+      selectedIndex.value = navigationItems.indexOf(topItem);
+      selectedSubmenuId.value = topItem.id;
+      currentPage.value = pageName ?? topItem.label;
+      showRail.value = topItem.showRail;
+      // Clear expanded menus if selecting a non-submenu
+      if (!topItem.hasSubmenu) expandedMenus.clear();
+      return;
+    }
+
+    // if not a top-level, try to find in submenus
+    for (var item in navigationItems) {
+      if (item.submenuItems != null) {
+        final sub = item.submenuItems!.firstWhere(
+              (s) => s.id == submenuId,
+          orElse: () => SubmenuItem(id: '', label: ''),
+        );
+        if (sub.id.isNotEmpty) {
+          selectedIndex.value = -1;
+          selectedSubmenuId.value = sub.id;
+          currentPage.value = pageName ?? sub.label;
+          showRail.value = true; // usually rail stays visible for submenus
+          return;
+        }
+      }
+    }
+
+    // ff still not found, default to dashboard
+    selectedIndex.value = 1; // dashboard index
+    selectedSubmenuId.value = 'dashboard';
+    currentPage.value = 'Dashboard';
+    showRail.value = true;
+  }
+
   // Select top-level item
   void selectItem(int index, NavigationItem item) {
     selectedIndex.value = index;

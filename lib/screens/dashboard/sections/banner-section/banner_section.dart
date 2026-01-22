@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../components/primary_button.dart';
+import '../../../../controllers/app_navigation_controller.dart';
 
 class BannerSection extends StatelessWidget {
   const BannerSection({super.key});
