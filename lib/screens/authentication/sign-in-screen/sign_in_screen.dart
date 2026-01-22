@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
-import '../../../controllers/auth_image_items_controller.dart';
+import '../../../controllers/authentication_controller.dart';
 import '../components/auth_images_layout.dart';
 import 'sections/sign_in_form_section.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
-  final AuthImageItemsController controller = Get.put(AuthImageItemsController());
+  final AuthenticationController controller = Get.put(AuthenticationController());
 
   @override
   Widget build(BuildContext context) {
