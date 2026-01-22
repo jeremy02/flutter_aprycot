@@ -69,9 +69,7 @@ class SignInForm extends StatelessWidget {
                 // navigate to signup
                 print('Sign up clicked');
                 final navController = Get.find<AppNavigationController>();
-                // Navigate to top-level Authentication
-                // navController.navigateTo('authentication');
-               // Navigate to Signup screen
+                // Navigate to top-level Authentication, Signup screen
                 navController.navigateTo('authentication', pageName: 'Sign Up');
               },
             ),
