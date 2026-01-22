@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter_sidebar_x/utils/responsive.dart';
 import '../../controllers/app_navigation_controller.dart';
 import '../components/navigation/navigation_rail_widget.dart';
-import 'authentication/sign-in/sign_in_screen.dart';
+import 'authentication/sign-in-screen/sign_in_screen.dart';
 import 'dashboard/dashboard_screen.dart';
 import 'default/default_page_widget.dart';
 
