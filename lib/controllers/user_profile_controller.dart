@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../models/auth/user_profile.dart';
 
 class UserProfileController extends GetxController {

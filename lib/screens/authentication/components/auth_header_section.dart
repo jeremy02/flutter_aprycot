@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class AuthHeaderSection extends StatelessWidget {
   final String? title;
   final String? subtitle;
+  final String? titleImagePath;
 
   const AuthHeaderSection({
     super.key,
     this.title,
     this.subtitle,
+    this.titleImagePath,
   });
 
   @override
@@ -15,6 +17,7 @@ class AuthHeaderSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Top logo
         Align(
           alignment: Alignment.centerLeft,
           child: Image.asset(
@@ -23,13 +26,24 @@ class AuthHeaderSection extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
+        if (titleImagePath != null) ...[
+          const SizedBox(height: 16),
+          Align(
+            alignment: Alignment.center,
+            child: Image.asset(
+              titleImagePath!,
+              width: 60,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ],
         if (title != null || subtitle != null) const SizedBox(height: 28),
         if (title != null)
           Align(
             alignment: Alignment.center,
             child: Text(
               title!,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.w700,
                 color: Color(0xFF07143B),
@@ -43,12 +57,14 @@ class AuthHeaderSection extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               subtitle!,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.normal,
                 color: Color(0xFF959895),
                 letterSpacing: -0.5,
+                height: 1.2,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
       ],

@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
+
 import '../../../../models/auth/auth_image_item.dart';
 import 'auth_circle_image.dart';
 import 'auth_dashed_circle_painter.dart';

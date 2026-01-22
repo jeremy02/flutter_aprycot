@@ -1,14 +1,12 @@
 import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../controllers/authentication_controller.dart';
+import 'components/reset_password_success_layout.dart';
 
-import '../../../controllers/authentication_controller.dart';
-import '../components/auth_images_layout.dart';
-import 'components/sign_up_form.dart';
+class ResetPasswordSuccessScreen extends StatelessWidget {
+  ResetPasswordSuccessScreen({super.key});
 
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({super.key});
   final AuthenticationController controller = Get.put(AuthenticationController());
 
   @override
@@ -25,16 +23,14 @@ class SignUpScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    flex: 44,
-                    child: SignUpForm(controller: controller),
+                  Flexible(
+                    flex: 39,
+                    child: ResetPasswordSuccessLayout(controller: controller,),
                   ),
                   const SizedBox(width: 60,),
-                  Flexible(
-                    flex: 56,
-                    child: AuthImagesLayout(
-                        items: controller.signUpAuthImageItems
-                    ),
+                  Expanded(
+                    flex: 63,
+                    child: Container(),
                   ),
                 ],
               ),

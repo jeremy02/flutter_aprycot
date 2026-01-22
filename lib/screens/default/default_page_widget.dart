@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../controllers/app_navigation_controller.dart';
 
 class DefaultPageWidget extends StatelessWidget {
   final String sectionTitle;

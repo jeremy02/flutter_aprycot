@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../controllers/user_profile_controller.dart';
 import 'sections/user_profile_banner_section/user_profile_banner_section.dart';
 

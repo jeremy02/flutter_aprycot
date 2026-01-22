@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sidebar_x/screens/authentication/reset-password/reset-password-success/reset_password_success_screen.dart';
 import 'package:flutter_sidebar_x/screens/user_profile/user_profile_screen.dart';
-import 'package:get/get.dart';
 import 'package:flutter_sidebar_x/utils/responsive.dart';
+import 'package:get/get.dart';
 import '../../controllers/app_navigation_controller.dart';
 import '../components/navigation/navigation_rail_widget.dart';
 import 'authentication/sign-in-screen/sign_in_screen.dart';
@@ -87,6 +88,8 @@ class MainScreen extends StatelessWidget {
             } else if (controller.selectedSubmenuId.value == "authentication"){
               if (controller.currentPage.value == "Sign Up") {
                 return SignUpScreen();
+              } else if (controller.currentPage.value == "Reset Password Success") {
+                return ResetPasswordSuccessScreen();
               }
               return SignInScreen();
             } else if (controller.selectedSubmenuId.value == "user_profile"){

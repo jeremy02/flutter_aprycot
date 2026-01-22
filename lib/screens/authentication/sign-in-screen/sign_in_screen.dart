@@ -1,10 +1,11 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_sidebar_x/screens/authentication/sign-in-screen/components/sign_in_form.dart';
-import 'dart:math' as math;
 import 'package:get/get.dart';
+
 import '../../../controllers/authentication_controller.dart';
 import '../components/auth_images_layout.dart';
-import '../sign-up-screen/components/sign_up_form.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});

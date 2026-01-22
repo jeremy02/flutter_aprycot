@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../components/primary_button.dart';
 
 class AuthPrimaryButton extends StatelessWidget {

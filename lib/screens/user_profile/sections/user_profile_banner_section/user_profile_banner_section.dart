@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'components/user_profile_bottom_overlay.dart';
 
 class UserProfileBannerSection extends StatelessWidget {

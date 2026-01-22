@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../../controllers/app_navigation_controller.dart';
 import '../../../../controllers/authentication_controller.dart';
 import '../../components/auth_checkbox_actions_field.dart';
@@ -47,7 +48,9 @@ class SignInForm extends StatelessWidget {
                 onToggle: () => controller.toggleRememberMe(!controller.rememberMe.value),
                 secondActionText: 'Forgot Password',
                 onSecondAction: () {
-                  // navigation or logic
+                  final navController = Get.find<AppNavigationController>();
+                  // Navigate to top-level Authentication, Reset Password screen
+                  navController.navigateTo('authentication', pageName: 'Reset Password Success');
                 },
               ),
             ),
@@ -73,38 +76,6 @@ class SignInForm extends StatelessWidget {
               },
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSocialIcon(String socialIconImagePath) {
-    return Material(
-      color: Colors.transparent,
-      shape: const CircleBorder(),
-      child: InkWell(
-        onTap: () {},
-        customBorder: const CircleBorder(),
-        splashColor: Colors.black12,
-        highlightColor: Colors.black12,
-        child: Ink(
-          width: 36,
-          height: 36,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: Colors.transparent,
-              width: 1,
-            ),
-          ),
-          child: Center(
-            child: Image.asset(
-              socialIconImagePath,
-              fit: BoxFit.cover,
-              width: 24,
-              height: 24,
-            ),
-          ),
         ),
       ),
     );

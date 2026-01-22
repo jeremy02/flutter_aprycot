@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
+
+import '../models/navigation/data/app_navigation_items.dart';
 import '../models/navigation/navigation_item.dart';
 import '../models/navigation/sub_menu_item.dart';
-import '../models/navigation/data/app_navigation_items.dart';
 
 class AppNavigationController extends GetxController {
   final showRail = false.obs;

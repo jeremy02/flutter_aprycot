@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../../controllers/app_navigation_controller.dart';
 import '../../../../controllers/authentication_controller.dart';
 import '../../components/auth_checkbox_actions_field.dart';
@@ -26,7 +27,7 @@ class SignUpForm extends StatelessWidget {
               title: 'Sign In',
               subtitle: 'Create your Hope UI account.',
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -122,38 +123,6 @@ class SignUpForm extends StatelessWidget {
               },
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSocialIcon(String socialIconImagePath) {
-    return Material(
-      color: Colors.transparent,
-      shape: const CircleBorder(),
-      child: InkWell(
-        onTap: () {},
-        customBorder: const CircleBorder(),
-        splashColor: Colors.black12,
-        highlightColor: Colors.black12,
-        child: Ink(
-          width: 36,
-          height: 36,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: Colors.transparent,
-              width: 1,
-            ),
-          ),
-          child: Center(
-            child: Image.asset(
-              socialIconImagePath,
-              fit: BoxFit.cover,
-              width: 24,
-              height: 24,
-            ),
-          ),
         ),
       ),
     );

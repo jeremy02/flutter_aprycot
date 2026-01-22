@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import '../../../../../models/menu_items/menu_item.dart';
 
 class TrendingOrderCard extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+
 
 class AuthImageItem {
   final String imagePath;
