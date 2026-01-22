@@ -7,10 +7,10 @@ import '../../components/auth_header_section.dart';
 import '../../components/auth_primary_button.dart';
 import '../../components/auth_text_input_field.dart';
 
-class SignInFormSection extends StatelessWidget {
+class SignInForm extends StatelessWidget {
   final AuthenticationController controller;
 
-  const SignInFormSection({super.key, required this.controller});
+  const SignInForm({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {

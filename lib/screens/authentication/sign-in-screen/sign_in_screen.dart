@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:get/get.dart';
 import '../../../controllers/authentication_controller.dart';
 import '../components/auth_images_layout.dart';
-import 'sections/sign_in_form_section.dart';
+import 'components/sign_in_form.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
@@ -24,7 +24,7 @@ class SignInScreen extends StatelessWidget {
                 children: [
                   Flexible(
                     flex: 39,
-                    child: SignInFormSection(controller: controller),
+                    child: SignInForm(controller: controller),
                   ),
                   const SizedBox(width: 60,),
                   Flexible(
