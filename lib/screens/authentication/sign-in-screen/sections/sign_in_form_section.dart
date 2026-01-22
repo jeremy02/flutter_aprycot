@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sidebar_x/screens/authentication/components/auth_primary_button.dart';
 import 'package:get/get.dart';
 import '../../../../controllers/authentication_controller.dart';
 import '../../components/auth_checkbox_actions_field.dart';
@@ -49,26 +50,10 @@ class SignInFormSection extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            LayoutBuilder(
-              builder: (context, constraints) {
-                return Align(
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    width: constraints.maxWidth / 3,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFEA6A12),
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                        elevation: 0,
-                      ),
-                      child: const Text('Sign in', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Colors.white)),
-                    ),
-                  ),
-                );
-              },
+            AuthPrimaryButton(
+              label: 'Sign in',
+              onPressed: () => {},
+              widthFactor: 0.33,
             ),
             const SizedBox(height: 16),
             Center(

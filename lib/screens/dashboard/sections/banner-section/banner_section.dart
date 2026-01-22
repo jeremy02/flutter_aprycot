@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../components/primary_button.dart';
+
 class BannerSection extends StatelessWidget {
   const BannerSection({super.key});
 
@@ -117,25 +119,9 @@ class BannerSection extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 32),
-                            ElevatedButton(
+                            PrimaryButton(
+                              label: 'Check Menu',
                               onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFFEA6A12),
-                                foregroundColor: Colors.white,
-                                padding: const EdgeInsets.all(16),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                elevation: 0,
-                              ),
-                              child: const Text(
-                                'Check Menu',
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.normal,
-                                  letterSpacing: 0.1,
-                                ),
-                              ),
                             ),
                             const SizedBox(height: 20),
                           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../components/dashboard/section_header.dart';
+import '../../../../../components/primary_button.dart';
 import '../../../../../controllers/menu_items_controller.dart';
 import 'cart_item_card.dart';
 import 'empty_cart.dart';
@@ -75,29 +76,11 @@ class CartSection extends StatelessWidget {
                   return SizedBox(
                     width: double.infinity,
                     child: Center(
-                      child: ElevatedButton(
+                      child: PrimaryButton(
+                        label: 'Checkout',
                         onPressed: controller.canCheckout.value ? () {
                           print('Checkout: ${controller.totalPrice.toStringAsFixed(2)}');
                         } : null,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFFEA6A12),
-                          foregroundColor: Colors.white,
-                          // disabledBackgroundColor: const Color(0xFFE0E0E0),
-                          // disabledForegroundColor: Colors.white,
-                          padding: const EdgeInsets.all(16),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          elevation: 0,
-                        ),
-                        child: const Text(
-                          'Checkout',
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.normal,
-                            letterSpacing: 0.1,
-                          ),
-                        ),
                       ),
                     ),
                   );
