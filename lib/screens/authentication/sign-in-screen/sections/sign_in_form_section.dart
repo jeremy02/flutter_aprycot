@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../controllers/authentication_controller.dart';
+import '../../components/auth_checkbox_actions_field.dart';
 import '../../components/auth_pages_header.dart';
 import '../../components/auth_text_field.dart';
 
@@ -35,65 +36,19 @@ class SignInFormSection extends StatelessWidget {
               obscureText: true,
             ),
             const SizedBox(height: 16),
-            // remember Me & Forgot Password
             Obx(
-                  () => Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: InkWell(
-                      onTap: () => controller.toggleRememberMe(!controller.rememberMe.value),
-                      borderRadius: BorderRadius.circular(4),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: Checkbox(
-                              value: controller.rememberMe.value,
-                              onChanged: null, // handled by InkWell
-                              activeColor: const Color(0xFFEA6A12),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          const Flexible(
-                            child: Text(
-                              'Remember me?',
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Color(0xFF959895),
-                                letterSpacing: -0.5,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Forgot Password',
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xFFEA6A12),
-                          letterSpacing: -0.5,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              () => AuthCheckboxActionsField(
+                centerWidget: false,
+                checkboxText: 'Remember me?',
+                isChecked: controller.rememberMe.value,
+                onToggle: () => controller.toggleRememberMe(!controller.rememberMe.value),
+                secondActionText: 'Forgot Password',
+                onSecondAction: () {
+                  // navigation or logic
+                },
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 16),
             LayoutBuilder(
               builder: (context, constraints) {
                 return Align(
