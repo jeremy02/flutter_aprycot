@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AuthPagesHeader extends StatelessWidget {
+class AuthHeaderSection extends StatelessWidget {
   final String? title;
   final String? subtitle;
 
-  const AuthPagesHeader({
+  const AuthHeaderSection({
     super.key,
     this.title,
     this.subtitle,

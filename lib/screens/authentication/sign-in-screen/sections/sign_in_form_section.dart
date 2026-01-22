@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sidebar_x/screens/authentication/components/auth_primary_button.dart';
 import 'package:get/get.dart';
 import '../../../../controllers/authentication_controller.dart';
 import '../../components/auth_checkbox_actions_field.dart';
-import '../../components/auth_pages_header.dart';
-import '../../components/auth_text_field.dart';
+import '../../components/auth_footer_section.dart';
+import '../../components/auth_header_section.dart';
+import '../../components/auth_primary_button.dart';
+import '../../components/auth_text_input_field.dart';
 
 class SignInFormSection extends StatelessWidget {
-  SignInFormSection({super.key});
+  final AuthenticationController controller;
 
-  // Initialize controller
-  final AuthenticationController controller = Get.put(AuthenticationController());
+  const SignInFormSection({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +20,18 @@ class SignInFormSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const AuthPagesHeader(
+            const AuthHeaderSection(
               title: 'Sign In',
               subtitle: 'Sign in to stay connected.',
             ),
             const SizedBox(height: 16),
-            AuthTextField(
+            AuthTextInputField(
               label: 'Email',
               controller: controller.emailController,
               keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 16),
-            AuthTextField(
+            AuthTextInputField(
               label: 'Password',
               controller: controller.passwordController,
               obscureText: true,
@@ -56,71 +56,17 @@ class SignInFormSection extends StatelessWidget {
               widthFactor: 0.33,
             ),
             const SizedBox(height: 16),
-            Center(
-              child: Wrap(
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                spacing: 4,
-                children: [
-                  Text(
-                    'or sign in with other accounts?',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color(0xFF07143B),
-                      letterSpacing: -0.5,
-                    ),
-                  ),
-                ]
-              ),
-            ),
-            const SizedBox(height: 16),
-            // Social Login Icons
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: controller.socialIcons.map((iconPath) {
-                int index = controller.socialIcons.indexOf(iconPath);
-                return Row(
-                  children: [
-                    _buildSocialIcon(iconPath),
-                    if (index != controller.socialIcons.length - 1) const SizedBox(width: 16),
-                  ],
-                );
-              }).toList(),
-            ),
-            const SizedBox(height: 16),
-            Center(
-              child: Wrap(
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                spacing: 4,
-                children: [
-                  const Text(
-                    "Don't have an account? ",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color(0xFF07143B),
-                      letterSpacing: -0.8,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      minimumSize: Size.zero,
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    ),
-                    child: const Text(
-                      'Click here to sign up.',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFFEA6A12),
-                        letterSpacing: -0.8,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            AuthFooterSection(
+              labelText: 'or sign in with other accounts?',
+              socialIcons: controller.socialIcons,
+              onSocialIconPressed: (id, imagePath) {
+                print('Sign in via $id');
+              },
+              labelTextDescription: "Don't have an account? ",
+              labelActionText: 'Click here to sign up.',
+              onLabelActionTextPressed: () {
+                print('Sign up clicked');
+              },
             ),
           ],
         ),

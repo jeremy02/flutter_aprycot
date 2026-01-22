@@ -14,18 +14,18 @@ class AuthenticationController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // list of social icons
-  var socialIcons = <String>[].obs;
+  // list of social icons (map of image path to platform id)
+  var socialIcons = <Map<String, String>>[].obs;
 
   @override
   void onInit() {
     super.onInit();
     // initialize social icons
     socialIcons.addAll([
-      'images/auth_images/gmail_icon.png',
-      'images/auth_images/facebook_icon.png',
-      'images/auth_images/instagram_icon.png',
-      'images/auth_images/linkedin_icon.png',
+      {'image': 'images/auth_images/gmail_icon.png', 'id': 'gmail'},
+      {'image': 'images/auth_images/facebook_icon.png', 'id': 'facebook'},
+      {'image': 'images/auth_images/instagram_icon.png', 'id': 'instagram'},
+      {'image': 'images/auth_images/linkedin_icon.png', 'id': 'linkedin'},
     ]);
   }
 

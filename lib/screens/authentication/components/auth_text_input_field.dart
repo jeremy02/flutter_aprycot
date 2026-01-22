@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class AuthTextField extends StatelessWidget {
+class AuthTextInputField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final bool obscureText;
   final TextInputType keyboardType;
 
-  const AuthTextField({
+  const AuthTextInputField({
     super.key,
     required this.label,
     required this.controller,

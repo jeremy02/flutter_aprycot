@@ -24,7 +24,7 @@ class SignInScreen extends StatelessWidget {
                 children: [
                   Flexible(
                     flex: 39,
-                    child: SignInFormSection(),
+                    child: SignInFormSection(controller: controller),
                   ),
                   const SizedBox(width: 60,),
                   Flexible(
