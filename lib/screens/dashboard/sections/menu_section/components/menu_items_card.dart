@@ -106,7 +106,7 @@ class MenuItemsCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Flexible(
+                          Expanded(
                             child: Row(
                               children: [
                                 Text(

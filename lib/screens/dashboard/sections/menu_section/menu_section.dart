@@ -20,7 +20,7 @@ class MenuSection extends StatelessWidget {
 
     return Row(
       children: [
-        Flexible(
+        Expanded(
           flex: 63,
           child: SizedBox(
             height: containerHeight,
@@ -45,7 +45,7 @@ class MenuSection extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        Flexible(
+        Expanded(
           flex: 37,
           child: CartSection(
             containerHeight: containerHeight,

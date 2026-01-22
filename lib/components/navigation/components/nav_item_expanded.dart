@@ -48,7 +48,7 @@ class NavItemExpanded extends StatelessWidget {
                     color: selected ? Colors.white : orange,
                   ),
                   const SizedBox(width: 10),
-                  Expanded( // Keep Flexible
+                  Expanded(
                     child: Text(
                       item.label,
                       style: TextStyle(

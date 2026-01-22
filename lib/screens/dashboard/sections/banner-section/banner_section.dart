@@ -12,7 +12,7 @@ class BannerSection extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(24.0, 20.0, 20.0, 0.0),
           child: Row(
             children: [
-              Flexible(
+              Expanded(
                 flex: 63,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
@@ -146,7 +146,7 @@ class BannerSection extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 20),
-              Flexible(
+              Expanded(
                 flex: 37,
                 child: Stack(
                   alignment: Alignment.topCenter,

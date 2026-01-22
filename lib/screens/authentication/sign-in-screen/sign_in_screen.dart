@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
 import '../../../controllers/auth_image_items_controller.dart';
-import 'components/auth_images_layout.dart';
+import '../components/auth_images_layout.dart';
+import 'sections/sign_in_form_section.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
@@ -21,26 +22,13 @@ class SignInScreen extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  // Left panel (can be anything, empty for now)
                   Flexible(
-                    flex: 45,
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(
-                          80, 100, 0, 20
-                      ),
-                      color: Colors.red,
-                      width: double.infinity,
-                      height: double.infinity,
-                      child: Container(
-                        color: Colors.black,
-                        width: double.infinity,
-                        height: double.infinity,
-                      ),
-                    ),
+                    flex: 39,
+                    child: SignInFormSection(),
                   ),
-                  // Right panel: radial layout
+                  const SizedBox(width: 60,),
                   Flexible(
-                    flex: 55,
+                    flex: 63,
                     child: AuthImagesLayout(
                         items: controller.signInAuthImageItems
                     ),

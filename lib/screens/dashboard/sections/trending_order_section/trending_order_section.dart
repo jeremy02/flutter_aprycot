@@ -23,7 +23,7 @@ class TrendingOrderSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Flexible(
+        Expanded(
           flex: 63,
           child: SizedBox(
             // height: containerHeight,
@@ -45,7 +45,7 @@ class TrendingOrderSection extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        Flexible(
+        Expanded(
           flex: 37,
           child: CategoriesSection(
             controller: categoriesController
