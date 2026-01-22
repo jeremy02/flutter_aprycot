@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:get/get.dart';
 import '../../../controllers/authentication_controller.dart';
 import '../components/auth_images_layout.dart';
+import 'components/sign_up_form.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -20,16 +21,15 @@ class SignUpScreen extends StatelessWidget {
                 height: math.max(800, constraints.maxHeight * 0.9),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    flex: 39,
-                    child: Container(
-
-                    ),
+                    flex: 44,
+                    child: SignUpForm(controller: controller),
                   ),
                   const SizedBox(width: 60,),
                   Flexible(
-                    flex: 63,
+                    flex: 56,
                     child: AuthImagesLayout(
                         items: controller.signUpAuthImageItems
                     ),

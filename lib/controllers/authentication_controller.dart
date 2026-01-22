@@ -12,10 +12,17 @@ class AuthenticationController extends GetxController {
 
   // for checkbox state
   var rememberMe = false.obs;
+  var termsOfUse = false.obs;
 
   // text controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final emailSignUpController = TextEditingController();
+  final phoneNumberController = TextEditingController();
+  final passwordSignUpController = TextEditingController();
+  final confirmPasswordSignUpController = TextEditingController();
 
   // list of social icons (map of image path to platform id)
   var socialIcons = <Map<String, String>>[].obs;
@@ -41,11 +48,26 @@ class AuthenticationController extends GetxController {
     }
   }
 
+  // toggle the terms of use
+  void toggleTermsOfUse([bool? value]) {
+    if (value != null) {
+      termsOfUse.value = value;
+    } else {
+      termsOfUse.value = !termsOfUse.value;
+    }
+  }
+
   // clean up text controllers
   @override
   void onClose() {
     emailController.dispose();
     passwordController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailSignUpController.dispose();
+    phoneNumberController.dispose();
+    passwordSignUpController.dispose();
+    confirmPasswordSignUpController.dispose();
     super.onClose();
   }
 }
