@@ -22,7 +22,6 @@ class ResetPasswordSuccessLayout extends StatelessWidget {
               subtitle: 'A email has been sent to your email@domain.com. Please check for an email from company and click on the included link to reset your password.',
               titleImagePath: 'images/auth_images/success_icon.png',
             ),
-            const SizedBox(height: 16),
           ],
         ),
       ),
