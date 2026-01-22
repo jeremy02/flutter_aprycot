@@ -7,6 +7,9 @@ class AuthenticationController extends GetxController {
   // this is for the images on the sign in page/screen
   final List<AuthImageItem> signInAuthImageItems = AuthImageItems.signInAuthImageItems;
 
+  // this is for the images on the sign up page/screen
+  final List<AuthImageItem> signUpAuthImageItems = AuthImageItems.signUpAuthImageItems;
+
   // for checkbox state
   var rememberMe = false.obs;
 
