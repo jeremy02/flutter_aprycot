@@ -3,6 +3,7 @@ import 'package:flutter_sidebar_x/screens/authentication/reset-password/reset-pa
 import 'package:flutter_sidebar_x/screens/user_profile/user_profile_screen.dart';
 import 'package:flutter_sidebar_x/utils/responsive.dart';
 import 'package:get/get.dart';
+
 import '../../controllers/app_navigation_controller.dart';
 import '../components/navigation/navigation_rail_widget.dart';
 import 'authentication/sign-in-screen/sign_in_screen.dart';
