@@ -50,7 +50,7 @@ class SignInForm extends StatelessWidget {
                 onSecondAction: () {
                   final navController = Get.find<AppNavigationController>();
                   // Navigate to top-level Authentication, Reset Password screen
-                  navController.navigateTo('authentication', pageName: 'Reset Password Success');
+                  navController.navigateTo('authentication', pageName: 'Reset Password');
                 },
               ),
             ),

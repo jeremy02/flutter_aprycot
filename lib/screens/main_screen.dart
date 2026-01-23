@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../controllers/app_navigation_controller.dart';
 import '../components/navigation/navigation_rail_widget.dart';
+import 'authentication/reset-password/reset-password/reset_password_screen.dart';
 import 'authentication/sign-in-screen/sign_in_screen.dart';
 import 'authentication/sign-up-screen/sign_up_screen.dart';
 import 'dashboard/dashboard_screen.dart';
@@ -89,6 +90,8 @@ class MainScreen extends StatelessWidget {
             } else if (controller.selectedSubmenuId.value == "authentication"){
               if (controller.currentPage.value == "Sign Up") {
                 return SignUpScreen();
+              } else if (controller.currentPage.value == "Reset Password") {
+                return ResetPasswordScreen();
               } else if (controller.currentPage.value == "Reset Password Success") {
                 return ResetPasswordSuccessScreen();
               }

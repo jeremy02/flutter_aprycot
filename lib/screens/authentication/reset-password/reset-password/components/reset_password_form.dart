@@ -5,11 +5,12 @@ import '../../../../../controllers/app_navigation_controller.dart';
 import '../../../../../controllers/authentication_controller.dart';
 import '../../../components/auth_header_section.dart';
 import '../../../components/auth_primary_button.dart';
+import '../../../components/auth_text_input_field.dart';
 
-class ResetPasswordSuccessLayout extends StatelessWidget {
+class ResetPasswordForm extends StatelessWidget {
   final AuthenticationController controller;
 
-  const ResetPasswordSuccessLayout({super.key, required this.controller});
+  const ResetPasswordForm({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -21,20 +22,25 @@ class ResetPasswordSuccessLayout extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const AuthHeaderSection(
-              title: 'Success !',
-              subtitle: 'A email has been send to your email@domain.com.\n'
-                  'Please check for an email from company and click\n'
-                  'the included link to reset your password.',
-              titleImagePath: 'images/auth_images/success_icon.png',
+              title: 'Reset Password',
+              subtitle: 'Enter your email address and we\'ll send you an email'
+                  'with instructions to reset your password.',
+              titleImagePath: null,
+            ),
+            const SizedBox(height: 16),
+            AuthTextInputField(
+              label: 'Email',
+              controller: controller.emailController,
+              keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 16),
             AuthPrimaryButton(
-              label: 'Back to home',
+              label: 'Reset',
               onPressed: () {
                 final navController = Get.find<AppNavigationController>();
-                navController.navigateTo('dashboard');
+                navController.navigateTo('authentication', pageName: 'Reset Password Success');
               },
-              widthFactor: 0.50,
+              widthFactor: 0.33,
             ),
           ],
         ),
