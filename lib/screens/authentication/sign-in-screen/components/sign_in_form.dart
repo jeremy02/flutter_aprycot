@@ -57,7 +57,10 @@ class SignInForm extends StatelessWidget {
             const SizedBox(height: 16),
             AuthPrimaryButton(
               label: 'Sign in',
-              onPressed: () => {},
+              onPressed: () {
+                final navController = Get.find<AppNavigationController>();
+                navController.navigateTo('dashboard');
+              },
               widthFactor: 0.33,
             ),
             const SizedBox(height: 16),
