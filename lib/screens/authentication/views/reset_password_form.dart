@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../controllers/app_navigation_controller.dart';
-import '../../../../../controllers/authentication_controller.dart';
-import '../../../components/auth_header_section.dart';
-import '../../../components/auth_primary_button.dart';
-import '../../../components/auth_text_input_field.dart';
+import '../../../controllers/app_navigation_controller.dart';
+import '../../../controllers/authentication_controller.dart';
+import '../../../models/auth/auth_page.dart';
+import '../components/auth_header_section.dart';
+import '../components/auth_primary_button.dart';
+import '../components/auth_text_input_field.dart';
 
 class ResetPasswordForm extends StatelessWidget {
   final AuthenticationController controller;
@@ -37,8 +38,10 @@ class ResetPasswordForm extends StatelessWidget {
             AuthPrimaryButton(
               label: 'Reset',
               onPressed: () {
+                // Navigate to top-level Authentication, Reset Password Success screen
                 final navController = Get.find<AppNavigationController>();
-                navController.navigateTo('authentication', pageName: 'Reset Password Success');
+                // navController.navigateTo('authentication', pageName: 'Reset Password Success');
+                navController.goToAuth(AuthPage.resetPasswordSuccess);
               },
               widthFactor: 0.33,
             ),

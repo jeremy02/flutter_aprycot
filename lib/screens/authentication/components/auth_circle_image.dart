@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../models/auth/auth_image_item.dart';
-
 class AuthCircleImage extends StatelessWidget {
   final double size;
   final bool showImage;

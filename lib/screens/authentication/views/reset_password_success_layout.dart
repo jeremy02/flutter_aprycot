@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../controllers/app_navigation_controller.dart';
-import '../../../../../controllers/authentication_controller.dart';
-import '../../../components/auth_header_section.dart';
-import '../../../components/auth_primary_button.dart';
+import '../../../controllers/app_navigation_controller.dart';
+import '../../../controllers/authentication_controller.dart';
+import '../components/auth_header_section.dart';
+import '../components/auth_primary_button.dart';
 
 class ResetPasswordSuccessLayout extends StatelessWidget {
   final AuthenticationController controller;

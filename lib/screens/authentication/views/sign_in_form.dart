@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../controllers/app_navigation_controller.dart';
-import '../../../../controllers/authentication_controller.dart';
-import '../../components/auth_checkbox_actions_field.dart';
-import '../../components/auth_footer_section.dart';
-import '../../components/auth_header_section.dart';
-import '../../components/auth_primary_button.dart';
-import '../../components/auth_text_input_field.dart';
+import '../../../controllers/app_navigation_controller.dart';
+import '../../../controllers/authentication_controller.dart';
+import '../../../models/auth/auth_page.dart';
+import '../components/auth_checkbox_actions_field.dart';
+import '../components/auth_footer_section.dart';
+import '../components/auth_header_section.dart';
+import '../components/auth_primary_button.dart';
+import '../components/auth_text_input_field.dart';
 
 class SignInForm extends StatelessWidget {
   final AuthenticationController controller;
@@ -50,7 +51,8 @@ class SignInForm extends StatelessWidget {
                 onSecondAction: () {
                   final navController = Get.find<AppNavigationController>();
                   // Navigate to top-level Authentication, Reset Password screen
-                  navController.navigateTo('authentication', pageName: 'Reset Password');
+                  // navController.navigateTo('authentication', pageName: 'Reset Password');
+                  navController.goToAuth(AuthPage.resetPassword);
                 },
               ),
             ),
@@ -75,7 +77,8 @@ class SignInForm extends StatelessWidget {
               onLabelActionTextPressed: () {
                 final navController = Get.find<AppNavigationController>();
                 // Navigate to top-level Authentication, Signup screen
-                navController.navigateTo('authentication', pageName: 'Sign Up');
+                // navController.navigateTo('authentication', pageName: 'Sign Up');
+                navController.goToAuth(AuthPage.signUp);
               },
             ),
           ],

@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sidebar_x/screens/authentication/reset-password/reset-password-success/reset_password_success_screen.dart';
-import 'package:flutter_sidebar_x/screens/user_profile/user_profile_screen.dart';
-import 'package:flutter_sidebar_x/utils/responsive.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/app_navigation_controller.dart';
 import '../components/navigation/navigation_rail_widget.dart';
-import 'authentication/reset-password/reset-password/reset_password_screen.dart';
-import 'authentication/sign-in-screen/sign_in_screen.dart';
-import 'authentication/sign-up-screen/sign_up_screen.dart';
+import '../utils/responsive.dart';
+import 'authentication/authentication_screen.dart';
 import 'dashboard/dashboard_screen.dart';
 import 'default/default_page_widget.dart';
+import 'user_profile/user_profile_screen.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
@@ -88,14 +85,14 @@ class MainScreen extends StatelessWidget {
                 child: DashboardScreen(),
               );
             } else if (controller.selectedSubmenuId.value == "authentication"){
-              if (controller.currentPage.value == "Sign Up") {
-                return SignUpScreen();
-              } else if (controller.currentPage.value == "Reset Password") {
-                return ResetPasswordScreen();
-              } else if (controller.currentPage.value == "Reset Password Success") {
-                return ResetPasswordSuccessScreen();
-              }
-              return SignInScreen();
+              // if (controller.currentPage.value == "Sign Up") {
+              //   return SignUpScreen();
+              // } else if (controller.currentPage.value == "Reset Password") {
+              //   return ResetPasswordScreen();
+              // } else if (controller.currentPage.value == "Reset Password Success") {
+              //   return ResetPasswordSuccessScreen();
+              // }
+              return AuthenticationScreen();
             } else if (controller.selectedSubmenuId.value == "user_profile"){
               return SingleChildScrollView(
                 child: UserProfileScreen(),

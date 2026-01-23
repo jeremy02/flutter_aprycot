@@ -1,18 +1,29 @@
 import 'package:get/get.dart';
 
+import '../models/auth/auth_page.dart';
 import '../models/navigation/data/app_navigation_items.dart';
 import '../models/navigation/navigation_item.dart';
 import '../models/navigation/sub_menu_item.dart';
 
 class AppNavigationController extends GetxController {
+  final Rx<AuthPage> currentAuthPage = AuthPage.signIn.obs;
+
   final showRail = false.obs;
   final RxInt selectedIndex = 0.obs;
   final RxString selectedSubmenuId = 'authentication'.obs;
   final RxBool isExpanded = false.obs;
   final RxSet<String> expandedMenus = <String>{}.obs;
-  final RxString currentPage = 'Reset Password'.obs;
+  final RxString currentPage = 'Authentication'.obs;
 
   final List<NavigationItem> navigationItems = AppNavigationItems.items;
+
+  // TODO This needs more investigation
+  void goToAuth(AuthPage page) {
+    selectedSubmenuId.value = 'authentication';
+    currentPage.value = 'Authentication';
+    currentAuthPage.value = page;
+    showRail.value = false;
+  }
 
   // handle back button press, returns true if app should exit
   Future<bool> handleBackButton() async {
@@ -22,6 +33,7 @@ class AppNavigationController extends GetxController {
       currentPage.value = 'Dashboard';
       selectedIndex.value = 1; // index of dashboard in your navigationItems
       showRail.value = true;   // ensure sidebar is visible
+      currentAuthPage.value = AuthPage.signIn; // TODO This needs more investigation
       return false; // prevent default back action
     }
     return true; // allow exit if already on dashboard
@@ -45,6 +57,7 @@ class AppNavigationController extends GetxController {
       selectedIndex.value = navigationItems.indexOf(topItem);
       selectedSubmenuId.value = topItem.id;
       currentPage.value = pageName ?? topItem.label;
+      currentAuthPage.value = AuthPage.signIn; // TODO This needs more investigation
       showRail.value = topItem.showRail;
       // Clear expanded menus if selecting a non-submenu
       if (!topItem.hasSubmenu) expandedMenus.clear();
@@ -62,6 +75,7 @@ class AppNavigationController extends GetxController {
           selectedIndex.value = -1;
           selectedSubmenuId.value = sub.id;
           currentPage.value = pageName ?? sub.label;
+          currentAuthPage.value = AuthPage.signIn; // TODO This needs more investigation
           showRail.value = true; // usually rail stays visible for submenus
           return;
         }
@@ -80,6 +94,7 @@ class AppNavigationController extends GetxController {
     selectedIndex.value = index;
     selectedSubmenuId.value = item.id;
     currentPage.value = item.label;
+    currentAuthPage.value = AuthPage.signIn; // TODO This needs more investigation
 
     // dynamically set showRail based on item property
     showRail.value = item.showRail;
