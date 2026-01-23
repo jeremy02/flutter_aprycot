@@ -19,7 +19,9 @@ class ResetPasswordSuccessLayout extends StatelessWidget {
           children: [
             const AuthHeaderSection(
               title: 'Success !',
-              subtitle: 'A email has been sent to your email@domain.com. Please check for an email from company and click on the included link to reset your password.',
+              subtitle: 'A email has been send to your email@domain.com.\n'
+                  'Please check for an email from company and click\n'
+                  'the included link to reset your password.',
               titleImagePath: 'images/auth_images/success_icon.png',
             ),
           ],

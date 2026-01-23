@@ -62,7 +62,7 @@ class AuthHeaderSection extends StatelessWidget {
                 fontWeight: FontWeight.normal,
                 color: Color(0xFF959895),
                 letterSpacing: -0.5,
-                height: 1.2,
+                height: 1.5
               ),
               textAlign: TextAlign.center,
             ),

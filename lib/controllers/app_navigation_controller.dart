@@ -10,7 +10,7 @@ class AppNavigationController extends GetxController {
   final RxString selectedSubmenuId = 'authentication'.obs;
   final RxBool isExpanded = false.obs;
   final RxSet<String> expandedMenus = <String>{}.obs;
-  final RxString currentPage = 'Sign Up'.obs;
+  final RxString currentPage = 'Reset Password Success'.obs;
 
   final List<NavigationItem> navigationItems = AppNavigationItems.items;
 
