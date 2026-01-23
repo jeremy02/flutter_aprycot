@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../models/auth/auth_constellation_image_item.dart';
 import '../models/auth/auth_image_item.dart';
 import '../models/auth/data/auth_image_items.dart';
 
@@ -10,6 +11,9 @@ class AuthenticationController extends GetxController {
 
   // this is for the images on the sign up page/screen
   final List<AuthImageItem> signUpAuthImageItems = AuthImageItems.signUpAuthImageItems;
+
+  // this is for the images on the reset_password and reset reset_password_success screen
+  final List<AuthConstellationImageItem> resetPasswordImageItems = AuthImageItems.resetPasswordImageItems;
 
   // for checkbox state
   var rememberMe = false.obs;
