@@ -78,8 +78,9 @@ class AuthImagesLayout extends StatelessWidget {
           left: x,
           top: y,
           child: AuthCircleImage(
-            imageItem: item,
             size: itemSize,
+            showImage: item.showImage,
+            imagePath: item.imagePath,
           ),
         );
       }).toList(),

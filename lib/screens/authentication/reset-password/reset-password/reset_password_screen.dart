@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../controllers/authentication_controller.dart';
+import '../../components/auth_constellation_image_layout.dart';
 import 'components/reset_password_form.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
@@ -32,10 +33,8 @@ class ResetPasswordScreen extends StatelessWidget {
                   const SizedBox(width: 60,),
                   Expanded(
                     flex: 63,
-                    child: Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      color: Colors.blue,
+                    child: AuthConstellationImageLayout(
+                        items: controller.resetPasswordImageItems
                     ),
                   ),
                 ],
