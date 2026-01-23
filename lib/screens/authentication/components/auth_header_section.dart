@@ -37,7 +37,7 @@ class AuthHeaderSection extends StatelessWidget {
             ),
           ),
         ],
-        if (title != null || subtitle != null) const SizedBox(height: 28),
+        if (title != null || subtitle != null) const SizedBox(height: 20),
         if (title != null)
           Align(
             alignment: Alignment.center,

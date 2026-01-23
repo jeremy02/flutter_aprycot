@@ -24,7 +24,7 @@ class SignUpForm extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const AuthHeaderSection(
-              title: 'Sign In',
+              title: 'Sign Up',
               subtitle: 'Create your Hope UI account.',
             ),
             const SizedBox(height: 24),
