@@ -32,7 +32,11 @@ class ResetPasswordSuccessScreen extends StatelessWidget {
                   const SizedBox(width: 60,),
                   Expanded(
                     flex: 63,
-                    child: Container(),
+                    child: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      color: Colors.blue,
+                    ),
                   ),
                 ],
               ),

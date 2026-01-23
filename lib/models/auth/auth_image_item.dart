@@ -1,15 +1,13 @@
-
-
 class AuthImageItem {
-  final String imagePath;
   final double sizeFactor;
   final int minutePosition;
+  final String imagePath;
   final bool showImage;
 
   AuthImageItem({
-    required this.imagePath,
     required this.sizeFactor,
     required this.minutePosition,
+    required this.imagePath,
     this.showImage = true,
   });
 }
